@@ -9,6 +9,8 @@ import Partners from "./Partners";
 import { split } from "../../animations/text";
 import Tweets from "./Tweets";
 
+import { motion } from "framer-motion";
+
 const Homepage = ({ticketCount}) => {
 
   useEffect(()=>{
@@ -61,6 +63,19 @@ const Homepage = ({ticketCount}) => {
        countdownTimer();
    });
 
+   const letterAnimation = {
+    initial: {
+      y: 400,
+    },
+    animate: {
+      y: 0,
+      transition: {
+        ease:[0.6, 0.01, -0.05, 0.95],
+        duration: 1,
+      }
+    }
+  }
+
   return (
     <div>
       <Marquee />
@@ -68,7 +83,16 @@ const Homepage = ({ticketCount}) => {
       {/* Homepage content */}
       <section className="homepageWrapper">
         <div className="heroSection">
-          <div className="heroTop">
+
+          {/* <div className="layoutWithBg">  */}
+          <motion.div className="heroTop"
+          initial={{opacity: 0, x: 60}} animate={{opacity: 1, x: 0}}
+          transition= {{
+           ease: "easeInOut",
+           duration: 1.5,
+           delay: 0.5
+          }}
+          >
 
             <div className="imageWrapper"> 
             <img src={logo} alt="logo" />
@@ -93,23 +117,56 @@ const Homepage = ({ticketCount}) => {
             </div>
 
             </div>
-          </div>
+          </motion.div>
 
           <div className="heroCenter">
-            <div className="top">Best Bole Festival In Abuja</div>
+            <motion.div className="top" 
+            initial={{opacity: 0, x: -60}} animate={{opacity: 1, x: 0}}
+            transition= {{
+             ease: "easeInOut",
+             duration: 2,
+             delay: 0.7
+            }}
+            >Biggest Cookout Festival In Abuja</motion.div>
             {/* <div className="bottom">In Abuja </div> */}
           </div>
 
-          <p className="heroBottom">
+          {/* </div> */}
+
+            {/* For desktop */}
+          <motion.p className="heroBottom" 
+          initial={{opacity: 0, y: 60}} animate={{opacity: 1, y: 0}}
+          transition= {{
+           ease: "easeInOut",
+           duration: 2,
+           delay: 1.2
+          }}
+          >
             Abuja Bolebration is the largest cookout festival in Abuja,
-            Nigeria. This one day event, is targeted to promote the South-South
+            Nigeria. This is targeted to promote the South-South
             culture of Nigeria as well as encourage cultural exchange across
-            different races and tribes. The event features Bole (Roasted
-            Plantain). In addition to the fantastic food, the event features
-            entertainment attractions including games, music, cultural displays,
+            different races and tribes. The event features Bole - Roasted
+            Plantain, entertainment attractions including games, music, cultural displays,
             dance contest, rap battles and more and has overtime attracted over
             8,000 atttendees.
-          </p>
+          </motion.p>
+
+          {/* For mobile */}
+          <motion.p className="heroBottom2" 
+          initial={{opacity: 0, y: 60}} animate={{opacity: 1, y: 0}}
+          transition= {{
+           ease: "easeInOut",
+           duration: 2,
+           delay: 1.2
+          }}
+          >
+            Abuja Bolebration is the largest cookout festival in Abuja,
+            Nigeria. This is targeted to promote the South-South
+            culture of Nigeria as well as encourage cultural exchange across
+            different races and tribes featuring Bole - Roasted
+            Plantain, entertainment attractions such as games, music, cultural displays,
+            dance contest, rap battles and many more.
+          </motion.p>
         </div>
 
         <div className="callToAction">

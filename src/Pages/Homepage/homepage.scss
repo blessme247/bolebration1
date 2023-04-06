@@ -51,10 +51,14 @@
             padding: 0 ;
             line-height: 1.6;
             text-justify: auto;
-            font-size: $textBase;
+            font-size: $textSemiMedium;
             font-weight: $fontMedium;
             visibility: hidden;
             
+        }
+
+        .heroBottom2 {
+            display: none;
         }
     }
 
@@ -135,7 +139,7 @@
             justify-content: center;
             align-items: center;
             // position: absolute;
-            margin-top: 1rem;
+            margin-top: 4rem;
 
             .registerBtn {
                 height: 3.5rem;
@@ -152,16 +156,17 @@
     }
 
     .partnersContainer {
-           padding: 2rem 0;
+           padding: 2rem 0 3rem 0;
            width: $layout-breakpoint-semiMedium ;
            max-width: 90%;
-           margin: 5rem  auto 0 auto;
+           margin: 0  auto 0 auto;
 
         h2 {
             text-align: center;
             font-weight: $fontBold;
             font-size: $textXtraLarge;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(-1.5rem)
         }
 
         .partnersLogo {
@@ -180,7 +185,7 @@
 
     .tweetsSection {
         background-color: lighten($color: #55C03A, $amount: 48);
-        // padding: 2rem ;
+        padding: 2rem 0 ;
 
         .sectionHead {
             text-align: center;
@@ -204,16 +209,6 @@
                 border-radius: 1.5rem;
                 color: black;
                 margin-top: 2rem;
-                // border: 1px solid red;
-                
-                // display: flex;
-
-
-
-                // animation: scroll 12.5s linear 0s infinite;
-                // animation-play-state: running;
-                // animation-delay: 0s;
-                // animation-direction: normal;
                 animation: marquue 8s linear infinite;
                 transition: all .2s ease;
                 &:hover {
@@ -289,10 +284,29 @@
   @media (max-width: $layout-breakpoint-medium) {
     
 
-    .swiper-wrapper {
-        .imageWrapper {
-            // height: 200px;
+    .date {
+
+        span {
+            font-size: $textSmall !important;
         }
+        p {
+            font-size: $textMedium !important;
+        }
+    }
+
+    .heroBottom {
+        font-size: $textSmall !important;
+        display: none;
+    }
+
+    .heroBottom2 {
+                margin-top: 2rem !important;
+                padding: 0 !important;
+                line-height: 1.6 !important;
+                text-justify: auto !important;
+                font-size: $textSmall !important;
+                font-weight: $fontMedium !important;
+                display: block !important;
     }
 
     .freeTickets2 {
@@ -304,6 +318,13 @@
   }
 
   @media (max-width: $layout-breakpoint-small) {
+
+    // .layoutWithBg {
+    //     background-image: url(../../assets/Images/BG.jpg);
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    // }
 
 
     .heroTop {
@@ -336,7 +357,21 @@
     }
 
     .heroCenter {
-        font-size: $textSmall;
+        font-size: 30px !important;
+    }
+
+    .partnersContainer {
+        h2 {
+            font-size: 2.5rem !important;
+            font-weight: 500 !important;
+        }
+    }
+
+    .tweetsSection {
+        .sectionHead {
+            font-size: 2.5rem !important;
+            font-weight: 500 !important;
+        }
     }
    
 }

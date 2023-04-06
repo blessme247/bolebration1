@@ -1,0 +1,342 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/global";
+
+.homepageWrapper {
+    
+    
+
+    .heroSection {
+        padding: 2rem 0;
+        width: $layout-breakpoint-semiMedium ;
+        max-width: 90%;
+        margin: 5rem  auto 0 auto;
+        // margin-top: 2rem;
+        .heroTop {
+            @extend %flex;
+
+            .imageWrapper {
+                width: 15%;
+            }
+
+            .days {
+                width: 80%;
+                @extend %flex;
+            }
+
+            .date {
+                display: flex;
+                gap: 1rem;
+                flex-direction: column;
+
+                span {
+                    font-size: $textSemiMedium ;
+                }
+                p {
+                    font-size: $textXtraLarge;
+                    font-weight: $fontBold;
+                }
+            }
+        }
+
+        .heroCenter {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: $textXtraLarge;
+            color: $primary;
+            font-weight: $fontBold;
+        }
+
+        .heroBottom {
+            margin-top: 2rem;
+            padding: 0 ;
+            line-height: 1.6;
+            text-justify: auto;
+            font-size: $textBase;
+            font-weight: $fontMedium;
+            visibility: hidden;
+            
+        }
+    }
+
+    .callToAction {
+        margin: 2rem 0;
+        background-color: lighten($color: #55C03A, $amount: 48);
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        padding: 4rem 0;
+        position: relative;
+        
+
+        .swiper {
+            width: 68%;
+            margin: 0 auto 2rem auto;
+            align-items: center;
+            
+
+            .swiper-wrapper {
+
+                    .imageWrapper {
+                        max-width: 100%;
+                        height: 450px;
+    
+                        img {
+                            object-fit: cover;
+                            object-position: center;
+                            height: 100%;
+                            width: 100%;
+                            border-radius: 20px;
+
+                        }
+                    }
+
+
+
+                
+            }
+          }
+
+          
+        .freeTickets {
+            background-color: $white;
+            height: 8rem;
+            width: 15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 2rem;
+            position: absolute;
+            color: #55C03A;
+            z-index: 2;
+            left: 3rem;
+            top: 2rem;
+            border-radius: 15px;
+
+        }
+
+        .freeTickets2 {
+            background-color: $white;
+            height: 8rem;
+            width: 15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 2rem;
+            position: absolute;
+            color: #55C03A;
+            z-index: 2;
+            right: 3rem;
+            top: 16rem;
+            border-radius: 15px;
+
+        }
+
+        .registerBtnWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // position: absolute;
+            margin-top: 1rem;
+
+            .registerBtn {
+                height: 3.5rem;
+                // width: 10rem;
+                text-align: center;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                color: $white;
+                font-weight: $fontSemiBold;
+                font-size: $textSemiMedium;
+                background-color: $primary;
+            }
+        }
+    }
+
+    .partnersContainer {
+           padding: 2rem 0;
+           width: $layout-breakpoint-semiMedium ;
+           max-width: 90%;
+           margin: 5rem  auto 0 auto;
+
+        h2 {
+            text-align: center;
+            font-weight: $fontBold;
+            font-size: $textXtraLarge;
+            margin-bottom: 2rem;
+        }
+
+        .partnersLogo {
+           @extend %flex; 
+
+          img {
+            width: 15%;
+            aspect-ratio: 3/2 ;
+            object-fit: contain;
+            mix-blend-mode: color-burn ;
+          } 
+           
+           
+        }
+    }
+
+    .tweetsSection {
+        background-color: lighten($color: #55C03A, $amount: 48);
+        // padding: 2rem ;
+
+        .sectionHead {
+            text-align: center;
+            font-size: $textXtraLarge;
+            font-weight: $fontMedium;
+            margin-top: 1.5rem ;
+        }
+
+        .tweetsWrapper {
+            overflow-x: hidden;
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+            // display: grid;
+            // gap: 2rem;
+            // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            .tweetWrapper {
+                background-color: $white;
+                height: fit-content;
+                padding: 2rem 3rem;
+                border-radius: 1.5rem;
+                color: black;
+                margin-top: 2rem;
+                // border: 1px solid red;
+                
+                // display: flex;
+
+
+
+                // animation: scroll 12.5s linear 0s infinite;
+                // animation-play-state: running;
+                // animation-delay: 0s;
+                // animation-direction: normal;
+                animation: marquue 8s linear infinite;
+                transition: all .2s ease;
+                &:hover {
+                    background-color: rgb(29 161 242/1);
+                    color: $white;
+
+                }
+
+                .top {
+                    @extend %flex;
+
+                    .imageWrapper {
+
+                        img {
+                            height: 50px;
+                            width: 50px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+
+                    .nameGroup {
+                        font-size: $textSmall;
+
+                        .name {
+                            font-weight: $fontSemiBold;
+                        }
+                    }
+
+                    .logoWrapper {
+                        background-color: rgb(29 161 242/1);
+                        padding: .3rem .5rem;
+                        border-radius: 10px;
+                    }
+                }
+
+                .tweet {
+                    font-size: $textSmall;
+                    margin-top: 1rem;
+                }
+            }
+        }
+
+        .action {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(29 161 242/1);
+            width: fit-content;
+            margin: 2rem auto;
+            border-radius: 0.7rem;
+
+            a {
+                color: $white;
+                padding: 1rem ;
+            }
+        }
+    }
+}
+
+
+  @keyframes marquue {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @media (max-width: $layout-breakpoint-medium) {
+    
+
+    .swiper-wrapper {
+        .imageWrapper {
+            // height: 200px;
+        }
+    }
+
+    .freeTickets2 {
+        display: none;
+        visibility: hidden;
+        border: none;
+    }
+
+  }
+
+  @media (max-width: $layout-breakpoint-small) {
+
+
+    .heroTop {
+        flex-direction: column;
+        width: 100%;
+
+        .imageWrapper {
+            img {
+                height: 4rem ;
+            }
+        }
+
+        .days {
+            width: 100% !important;
+            margin-top: 1rem;
+
+            .date {
+                
+                span {
+            
+                font-size: $textSmall ;
+                // border: 1px solid red;
+            }
+            p {
+                font-size: $textBase;
+                font-weight: $fontBold;
+            }
+          }
+        }
+    }
+
+    .heroCenter {
+        font-size: $textSmall;
+    }
+   
+}

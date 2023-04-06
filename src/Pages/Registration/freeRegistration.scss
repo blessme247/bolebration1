@@ -1,0 +1,223 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/global";
+
+.freeRegPage {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    .imageWrapper {
+        width: 50%;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .formWrapper {
+        width: 50%;
+        padding: 2rem  ;
+
+        .logoImage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .formHeading {
+            font-size: $textSemiMedium;
+            font-weight: $fontSemiBold;
+        }
+
+        .formBrief {
+            font-size: $textSmall;
+            font-weight: $fontMedium;
+            margin-top: 1rem;
+
+            span {
+                color: #55C03A;
+                font-weight: $fontSemiBold
+            }
+        }
+
+     
+
+    }
+}
+
+.freeRegisterForm {
+    margin-top: 2rem;
+
+    .group {
+        @extend %flex;
+
+        .formGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 46%;
+
+            input {
+                border: none;
+                outline: 2px solid $primary;
+                height: 2.5rem;
+                padding: 1rem;
+                border-radius: 5px;
+            }
+
+            label {
+                font-size: 12px;
+                font-weight: $fontSemiBold;
+            }
+        }
+
+        .errorText {
+            color: rgb(213, 28, 28);
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+    .contactGroup {
+        margin-top: 2rem;
+    }
+
+    .radioGroup {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 12rem;
+
+        label {
+            font-size: 12px;
+            font-weight: $fontSemiBold;
+        }
+        
+
+        .maleRadioGroup, .femaleRadioGroup {
+            label {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+
+    .registerBtn {
+        background-color: $primary;
+        height: 2.5rem;
+        color: $white;
+        width: 60%;
+        // text-align: center;
+        display: flex;
+        align-items: center;
+        font-size: $textSemiMedium;
+        font-weight: $fontSemiBold;
+        justify-content: center;
+        margin: 3rem auto 0 auto;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .homeLink {
+        color: #55C03A;
+        text-align: right;
+        position: absolute;
+        top: 92%;
+        left: 90%;
+    }
+}
+
+.ConfirmationPopupWrapper {
+    background-color: #55C03A;
+    width: 50%;
+    height: fit-content;
+    margin: 5rem auto 0 auto;
+    padding: 5rem 2rem;
+
+    .main {
+        // background-color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .checkImage {
+            background-color: $white;
+            padding: 2rem;
+        }
+
+    }
+
+    .text {
+        color: $white;
+        text-align: center;
+        font-weight: $fontBold;
+        width: 80%;
+        margin: 0 auto;
+
+        .top {
+            margin-top: 2rem;
+        }
+
+        .bottom {
+            margin-top: 2rem;
+            font-weight: 600;
+            font-size: $textSmall;
+        }
+    }
+}
+
+
+@media (max-width: $layout-breakpoint-small) {
+
+    .freeRegPage {
+        flex-direction: column;
+        overflow: visible;
+
+        .imageWrapper {
+            display: none;
+        }
+
+        .formWrapper {
+            width: 100%;
+        }
+    }
+
+    .freeRegisterForm {
+        .group {
+            flex-direction: column;
+
+            .formGroup {
+                width: 100%;
+            }
+        }
+
+        .nameGroup {
+            gap: 1rem;
+        }
+
+        .contactGroup {
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+
+        .radioGroup {
+            display: flex;
+        }
+
+        .homeLink {
+            top: 130%;
+            left: 70%;
+        }
+
+    }
+
+   
+}

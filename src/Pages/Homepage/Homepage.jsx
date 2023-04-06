@@ -1,0 +1,143 @@
+import React, { useEffect, useState } from "react";
+import logo from "../../assets/Icons/logo.svg";
+import Marquee from "../../Components/Marquee/Marquee";
+
+import "./homepage.scss";
+import SwiperSlides from "./SwiperSlides";
+import { Link } from "react-router-dom";
+import Partners from "./Partners";
+import { split } from "../../animations/text";
+import Tweets from "./Tweets";
+
+const Homepage = ({ticketCount}) => {
+
+  useEffect(()=>{
+
+    console.log(ticketCount)
+  }, [])
+
+
+
+
+  const [expiryTime, setExpiryTime] = useState("2023-04-30T00:00:00+01:00");
+  const [countdownTime, setCountdownTime]= useState(
+      {
+          countdownDays:'',
+          countdownHours:'',
+          countdownlMinutes:'',
+          countdownSeconds:''
+      }
+  );
+   const countdownTimer=()=>{
+   
+       const timeInterval= setInterval(() => {
+         const countdownDateTime = new Date(expiryTime).getTime(); 
+         const currentTime = new Date().getTime();
+         const remainingDayTime = countdownDateTime - currentTime;
+         const totalDays = Math.floor(remainingDayTime / (1000 * 60 * 60 * 24));
+         const totalHours = Math.floor((remainingDayTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+         const totalMinutes = Math.floor((remainingDayTime % (1000 * 60 * 60)) / (1000 * 60));
+         const totalSeconds = Math.floor((remainingDayTime % (1000 * 60)) / 1000);
+    
+         const runningCountdownTime={
+            countdownDays: totalDays,
+            countdownHours: totalHours,
+            countdownMinutes: totalMinutes,
+            countdownSeconds: totalSeconds
+         }
+      
+         setCountdownTime(runningCountdownTime);
+    
+         if (remainingDayTime < 0) {
+            clearInterval(timeInterval);
+            setExpiryTime(false);
+           }
+    
+        }, 1000);
+   }
+    
+   useEffect(() => {
+    split()
+       countdownTimer();
+   });
+
+  return (
+    <div>
+      <Marquee />
+
+      {/* Homepage content */}
+      <section className="homepageWrapper">
+        <div className="heroSection">
+          <div className="heroTop">
+
+            <div className="imageWrapper"> 
+            <img src={logo} alt="logo" />
+            </div>
+
+            <div className="days"> 
+            <div className="date daysWrapper">
+              <span>Days</span>
+              <p>{countdownTime.countdownDays}</p>
+            </div>
+            <div className="date hoursWrapper">
+              <span>Hours</span>
+              <p>{countdownTime.countdownHours}</p>
+            </div>
+            <div className="date minutesWrapper">
+              <span>Minutes</span>
+              <p>{countdownTime.countdownMinutes}</p>
+            </div>
+            <div className="date secondsWrapper">
+              <span>Seconds</span>
+              <p>{countdownTime.countdownSeconds}</p>
+            </div>
+
+            </div>
+          </div>
+
+          <div className="heroCenter">
+            <div className="top">Best Bole Festival In Abuja</div>
+            {/* <div className="bottom">In Abuja </div> */}
+          </div>
+
+          <p className="heroBottom">
+            Abuja Bolebration is the largest cookout festival in Abuja,
+            Nigeria. This one day event, is targeted to promote the South-South
+            culture of Nigeria as well as encourage cultural exchange across
+            different races and tribes. The event features Bole (Roasted
+            Plantain). In addition to the fantastic food, the event features
+            entertainment attractions including games, music, cultural displays,
+            dance contest, rap battles and more and has overtime attracted over
+            8,000 atttendees.
+          </p>
+        </div>
+
+        <div className="callToAction">
+          <div className="freeTickets">
+            <p>Free Tickets</p>
+            <span>{ticketCount} 0f 1500</span>
+          </div>
+
+          <div className="freeTickets2">
+            <p>Free Tickets</p>
+            <span>{ticketCount} 0f 1500</span>
+          </div>
+
+          <SwiperSlides ticketCount />
+
+          <div className="registerBtnWrapper">
+            <Link to="/freeregistration" className="registerBtn">
+              Register Now
+            </Link>
+          </div>
+        </div>
+
+        <Partners />
+
+        <Tweets />
+      </section>
+    </div>
+  );
+};
+
+export default Homepage;

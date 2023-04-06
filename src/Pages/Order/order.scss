@@ -1,0 +1,76 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/global";
+
+
+.orderPageWrapper {
+
+    width: $layout-breakpoint-semiMedium ;
+    max-width: 90%;
+    margin:  0 auto;
+    padding: 2rem 0;
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .menu {
+
+        .menuHead {
+            margin: 2rem 0;
+        }
+
+        .foodCardWrapper {
+            // display: flex;
+            // justify-content: space-between;
+            // align-items: center;
+            // flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            
+
+            .foodCard {
+
+                width: 80%;
+                padding: 1rem 0;
+
+                .foodName {
+                    font-size: $textSmall;
+                    font-weight: $fontMedium;
+                    
+                }
+
+                .price {
+                    font-size: $textSmall;
+                    font-weight: $fontBold;
+                    margin: 0.5rem 0;
+                }
+                
+                img {
+                    border-radius: 15px;
+                    height: 250px;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                .orderBtn {
+                    background-color: #55C03A ;
+                    color: $white;
+                    border: none;
+                    padding: 0.6rem 1.5rem ;
+                    border-radius: 5px;
+                    font-size: $textBase;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $layout-breakpoint-medium) {
+
+    .foodCard {
+        width: 40%;
+    }
+}

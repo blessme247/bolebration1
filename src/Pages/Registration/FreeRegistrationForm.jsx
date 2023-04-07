@@ -5,10 +5,9 @@ import { registerSchema } from "../../utils/formValidation/register-schema";
 import { Formik, Field } from "formik";
 import axiosInstance from "../../utils/axiosConfig";
 import Swal from "sweetalert2";
-import DonutSpinner from "../../Components/Loader/Loader";
 
-const FreeRegistrationForm = ({ ticketCount, setTicketCount }) => {
-  console.log(typeof ticketCount);
+
+const FreeRegistrationForm = () => {
 
   const [male, setMale] = useState("");
   const [female, setFemale] = useState("");

@@ -12,11 +12,11 @@ import Tweets from "./Tweets";
 import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
 
-const Homepage = ({ticketCount}) => {
+const Homepage = () => {
 
   useEffect(()=>{
 
-    console.log(ticketCount)
+    // console.log(ticketCount)
   }, [])
 
 
@@ -170,7 +170,7 @@ const Homepage = ({ticketCount}) => {
           </motion.p>
         </div>
 
-        <CallToAction ticketCount={ticketCount}/>
+        <CallToAction />
 
         <Partners />
 

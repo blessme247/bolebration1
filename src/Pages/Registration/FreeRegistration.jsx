@@ -4,7 +4,7 @@ import leftImage from "../../assets/Images/registerImg.jpg"
 import FreeRegistrationForm from './FreeRegistrationForm'
 import ConfirmationPopup from './ConfirmationPopup'
 
-const FreeRegistration = ({ticketCount, setTicketCount}) => {
+const FreeRegistration = () => {
 
   const [showConfirmation, setShowConfirmation] = useState(false)
   return (
@@ -15,7 +15,7 @@ const FreeRegistration = ({ticketCount, setTicketCount}) => {
             <img src={leftImage} alt="bole (pantain)" />
         </div>
         
-            <FreeRegistrationForm ticketCount={ticketCount} setTicketCount={setTicketCount} />
+            <FreeRegistrationForm  />
 
     </div>
 

@@ -1,22 +1,25 @@
 
-import { useState } from "react";
+import {  useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./Pages/Homepage/Homepage";
 import FreeRegistration from "./Pages/Registration/FreeRegistration";
 import Order from "./Pages/Order/Order";
+import { getFreeTicketCount } from "./utils/getCount";
 
 
 function App() {
 
-  const [ticketCount, setTicketCount] = useState(0)
+  useEffect(()=>{
+    getFreeTicketCount()
+  })
 
   return (
 
     <> 
     
     <Routes> 
-       <Route path="/" element={<Homepage  ticketCount={ticketCount}/>}/> 
-       <Route path="/freeregistration"  element={<FreeRegistration ticketCount={ticketCount} setTicketCount={setTicketCount}/>}/> 
+       <Route path="/" element={<Homepage  />}/> 
+       <Route path="/freeregistration"  element={<FreeRegistration />}/> 
        <Route path="/order" element={<Order />}/> 
       
      </Routes> 

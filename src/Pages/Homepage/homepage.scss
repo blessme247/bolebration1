@@ -106,34 +106,66 @@
         .freeTickets {
             background-color: $white;
             height: 7rem;
-            width: 12rem;
+            width: fit-content;
             display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            padding: 2rem;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem ;
             position: absolute;
             color: #55C03A;
             z-index: 2;
             left: 3rem;
             top: 2rem;
             border-radius: 15px;
+            
+
+            .percent {
+                background-color: lighten($color: #d0e0cc, $amount: 12);
+                padding: 0.6rem 1.2rem;
+                border-radius: 5px;
+                font-size: $textMedium;
+                font-weight: $fontBold;
+            }
+
+            .count {
+                display: flex;
+                flex-direction: column;
+                font-size: $textBase;
+                font-weight: $fontMedium;
+            }
 
         }
 
         .freeTickets2 {
             background-color: $white;
-            height: 6rem;
-            width: 12rem;
+            height: 7rem;
+            width: fit-content;
             display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            padding: 2rem;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
             position: absolute;
             color: #55C03A;
             z-index: 2;
             right: 3rem;
             top: 16rem;
             border-radius: 15px;
+            
+
+            .percent {
+                background-color: lighten($color: #d0e0cc, $amount: 12);
+                padding: 0.6rem 1.2rem;
+                border-radius: 5px;
+                font-size: $textMedium;
+                font-weight: $fontBold;
+            }
+
+            .count {
+                display: flex;
+                flex-direction: column;
+                font-size: $textBase;
+                font-weight: $fontMedium;
+            }
 
         }
 
@@ -315,7 +347,9 @@
 
     .freeTickets {
         top: 0 !important;
-        left: 6rem !important;
+        left: 7rem !important;
+        height: 6rem !important;
+        border-top: 1px solid #55C03A !important;
     }
     .freeTickets2 {
         display: none;

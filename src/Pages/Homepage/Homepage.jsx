@@ -10,6 +10,7 @@ import { split } from "../../animations/text";
 import Tweets from "./Tweets";
 
 import { motion } from "framer-motion";
+import CallToAction from "./CallToAction";
 
 const Homepage = ({ticketCount}) => {
 
@@ -169,25 +170,7 @@ const Homepage = ({ticketCount}) => {
           </motion.p>
         </div>
 
-        <div className="callToAction">
-          <div className="freeTickets">
-            <p>Free Tickets</p>
-            <span>{ticketCount} 0f 1500</span>
-          </div>
-
-          <div className="freeTickets2">
-            <p>Free Tickets</p>
-            <span>{ticketCount} 0f 1500</span>
-          </div>
-
-          <SwiperSlides ticketCount />
-
-          <div className="registerBtnWrapper">
-            <Link to="/freeregistration" className="registerBtn">
-              Register Now
-            </Link>
-          </div>
-        </div>
+        <CallToAction ticketCount={ticketCount}/>
 
         <Partners />
 

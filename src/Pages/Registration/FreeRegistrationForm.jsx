@@ -70,14 +70,26 @@ const FreeRegistrationForm = ({ ticketCount, setTicketCount }) => {
             return response;
           } catch (error) {
             console.log(error, "error")
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              title:
-                error.message,
-              showConfirmButton: true,
-              timer: 3500,
-            })
+            if (error.response.status === 409) {
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title:
+                  error.response.data.message,
+                showConfirmButton: true,
+                timer: 3500,
+              })
+            }
+            else {
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title:
+                  "Registration failed, Please try again",
+                showConfirmButton: true,
+                timer: 3500,
+              })
+            }
           }
         }}
         validate={(values) => {

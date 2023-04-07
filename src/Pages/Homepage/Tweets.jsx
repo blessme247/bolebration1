@@ -6,7 +6,7 @@ import AVI3 from "../../assets/Images/AVI3.jpg";
 import AVI5 from "../../assets/Images/AVI5.jpg";
 import AVI6 from "../../assets/Images/AVI6.jpg";
 import { Link } from "react-router-dom";
-import Marquee from "react-fast-marquee";
+// import Marquee from "react-fast-marquee";
 
 const Tweets = () => {
   return (

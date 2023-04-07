@@ -82,6 +82,9 @@
                     .imageWrapper {
                         max-width: 100%;
                         height: 450px;
+                        @media (max-width: $layout-breakpoint-medium) {
+                            height: 350px;
+                        }
     
                         img {
                             object-fit: cover;
@@ -102,8 +105,8 @@
           
         .freeTickets {
             background-color: $white;
-            height: 8rem;
-            width: 15rem;
+            height: 7rem;
+            width: 12rem;
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
@@ -119,8 +122,8 @@
 
         .freeTickets2 {
             background-color: $white;
-            height: 8rem;
-            width: 15rem;
+            height: 6rem;
+            width: 12rem;
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
@@ -163,7 +166,7 @@
 
         h2 {
             text-align: center;
-            font-weight: $fontBold;
+            font-weight: $fontMedium;
             font-size: $textXtraLarge;
             margin-bottom: 0.5rem;
             transform: translateY(-1.5rem)
@@ -199,9 +202,6 @@
             display: flex;
             justify-content: space-between;
             gap: 3rem;
-            // display: grid;
-            // gap: 2rem;
-            // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             .tweetWrapper {
                 background-color: $white;
                 height: fit-content;
@@ -309,6 +309,14 @@
                 display: block !important;
     }
 
+    .swiper {
+        width: 90% !important;
+    }
+
+    .freeTickets {
+        top: 0 !important;
+        left: 6rem !important;
+    }
     .freeTickets2 {
         display: none;
         visibility: hidden;

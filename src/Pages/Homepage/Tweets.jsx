@@ -16,7 +16,10 @@ const Tweets = () => {
       <div className="sectionHead">Words on the Streets</div>
 
       {/* <Marquee className="tweetsWrapper">  */}
-      <div className="tweetsWrapper">
+      <div className="tweetsMarquee">
+        <div className="marqueeContainer"> 
+
+        <div className="scroll"> 
         <TweetsWrapper
           linkUrl="https://twitter.com/okoyechinyerej2/status/1589560816176574464?t=GH0a1DwZfjhgu9j1vhF-WA&s=03"
           name="JoyOkoyexo"
@@ -61,8 +64,10 @@ I had fun on Sunday and it was great hooking up with new friends in Abuja.."
           AVI={AVI6}
           tweet="I don reach #Bolebration ground o, i no wan here say #Bole don finish, make i chop before i do giveaway for anyone wey recognises me."
         />
+        </div>
+        </div>
       </div>
-      {/* </Marquee> */}
+     
 
       <div className="action">
         <Link target="_blank" to="https://twitter.com/BOLEbration">

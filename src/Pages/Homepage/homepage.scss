@@ -367,7 +367,7 @@
 
     .freeTickets {
         top: 0 !important;
-        left: 7rem !important;
+        left: 6rem !important;
         height: 6rem !important;
         border-top: 1px solid #55C03A !important;
     }
@@ -380,14 +380,6 @@
   }
 
   @media (max-width: $layout-breakpoint-small) {
-
-    // .layoutWithBg {
-    //     background-image: url(../../assets/Images/BG.jpg);
-    //     background-position: center;
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    // }
-
 
     .heroTop {
         flex-direction: column;

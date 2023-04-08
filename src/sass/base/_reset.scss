@@ -22,7 +22,11 @@ body {
 
 
 input {
-  border-radius: 0;
+  
+  @media (max-width:$layout-breakpoint-medium) {
+    font-size: $textSemiMedium;
+
+  }
 }
 
 a {

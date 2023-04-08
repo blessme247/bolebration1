@@ -8,8 +8,16 @@
 }
 
 html {
-  // font-size: 16px;
   font-family: "Poppins", sans-serif;
+  font-family: "Neurial Grotesk", sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+}
+
 }
 
 
@@ -19,6 +27,13 @@ input {
 
 a {
   text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 input[type="radio"],

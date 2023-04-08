@@ -36,12 +36,14 @@
         .formHeading {
             font-size: $textSemiMedium;
             font-weight: $fontSemiBold;
+            margin-top: 1rem;
         }
 
         .formBrief {
             font-size: $textSmall;
             font-weight: $fontMedium;
             margin-top: 1rem;
+            line-height: 1.5;
 
             span {
                 color: #55C03A;
@@ -65,17 +67,18 @@
             flex-direction: column;
             gap: 0.5rem;
             width: 46%;
+            margin-top: 0.5rem;
 
             input {
                 border: none;
                 outline: 2px solid $primary;
-                height: 2.5rem;
+                height: 2.9rem;
                 padding: 1rem;
                 border-radius: 5px;
             }
 
             label {
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: $fontSemiBold;
             }
         }
@@ -97,6 +100,11 @@
         align-items: center;
         gap: 12rem;
 
+        @media (max-width: $layout-breakpoint-small) {
+            justify-content: space-between;
+            gap: 0;
+        }
+
         label {
             font-size: $textBase;
             font-weight: $fontSemiBold;
@@ -112,26 +120,35 @@
 
     .registerBtn {
         background-color: $primary;
-        height: 2.5rem;
+        height: 2.9rem;
         color: $white;
-        width: 60%;
-        // text-align: center;
+        width: 50%;
         display: flex;
         align-items: center;
-        font-size: $textSemiMedium;
-        font-weight: $fontSemiBold;
+        font-size: $textBase;
+        font-weight: $fontMedium;
         justify-content: center;
         margin: 3rem auto 0 auto;
         border: none;
         border-radius: 5px;
+
+        @media (max-width: $layout-breakpoint-small) {
+            width: 70%;
+        }
     }
 
     .homeLink {
         color: #55C03A;
         text-align: right;
         position: absolute;
-        top: 92%;
-        left: 90%;
+        top: 95%;
+        left: 92%;
+
+        @media (max-width: $layout-breakpoint-small) {
+            top: 100%;
+            border: 1px solid red;
+            display: none;
+        }
     }
 }
 

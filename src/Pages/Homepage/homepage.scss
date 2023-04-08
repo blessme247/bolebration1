@@ -66,7 +66,7 @@
         margin: 2rem 0;
         background-color: lighten($color: #55C03A, $amount: 48);
         border-top-right-radius: 100px;
-        border-bottom-left-radius: 100px;
+        border-top-left-radius: 10px !important;
         padding: 4rem 0;
         position: relative;
         
@@ -173,18 +173,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            // position: absolute;
             margin-top: 4rem;
 
             .registerBtn {
-                height: 3.5rem;
-                // width: 10rem;
                 text-align: center;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
+                padding: 1rem 1.875rem;
+                border-radius: 5px;
                 color: $white;
-                font-weight: $fontSemiBold;
-                font-size: $textSemiMedium;
+                font-size: $textBase;
+                font-weight: $fontMedium;
                 background-color: $primary;
             }
         }
@@ -235,17 +232,19 @@
             overflow: hidden;
             display: flex;
             justify-content: space-between;
-            gap: 3rem;
-
+            gap: 1.5rem;
+            margin: 0.5rem 0;
+            
             .marqueeContainer {
                 flex-shrink: 0;
-                gap: 2rem;
+                gap: 1.5rem;
                 padding-right: 2rem;
                 animation: infinityScroll 17s linear 0s infinite forwards;
                 @extend %flex;
                 width: max-content;
                 max-width: unset;
                 overflow: hidden;
+                padding-right: 1.5rem;
                 &:hover {
                     animation-play-state: paused;
                 }
@@ -264,6 +263,7 @@
                         color: black;
                         margin-top: 2rem;
                         transition: all .2s ease;
+                        line-height: 1.5;
                         &:hover {
                             background-color: rgb(29 161 242/1);
                             color: $white;
@@ -315,8 +315,8 @@
             align-items: center;
             background-color: rgb(29 161 242/1);
             width: fit-content;
-            margin: 2rem auto;
-            border-radius: 0.7rem;
+            margin: 4rem auto 1rem auto;
+            border-radius: 5px;
 
             a {
                 color: $white;

@@ -49,7 +49,7 @@
         .heroBottom {
             margin-top: 2rem;
             padding: 0 ;
-            line-height: 1.6;
+            line-height: 1.5;
             text-justify: auto;
             font-size: $textSemiMedium;
             font-weight: $fontMedium;
@@ -59,18 +59,25 @@
 
         .heroBottom2 {
             display: none;
+
+            @media (max-width: $layout-breakpoint-medium) {
+                    margin-top: 2rem ;
+                    padding: 0 ;
+                    line-height: 1.5 ;
+                    text-justify: auto ;
+                    font-size: $textBase ;
+                    font-weight: $fontMedium ;
+                    display: block ;
+            }
         }
     }
 
     .callToAction {
         margin: 2rem 0;
         background-color: lighten($color: #55C03A, $amount: 48);
-        border-top-right-radius: 100px;
-        border-top-left-radius: 10px !important;
         padding: 4rem 0;
         position: relative;
         
-
         .swiper {
             width: 68%;
             margin: 0 auto 2rem auto;
@@ -198,7 +205,11 @@
             font-weight: $fontMedium;
             font-size: $textXtraLarge;
             margin-bottom: 0.5rem;
-            transform: translateY(-1.5rem)
+            transform: translateY(-1.5rem);
+
+            @media (max-width: $layout-breakpoint-small) {
+                font-size: $textLarge;
+            }
         }
 
         .partnersLogo {
@@ -224,6 +235,12 @@
             font-size: $textXtraLarge;
             font-weight: $fontMedium;
             margin-top: 1.5rem ;
+            padding: 0 1rem;
+
+            @media (max-width: $layout-breakpoint-small) {
+                font-size: $textLarge;
+            }
+            
         }
 
         .tweetsMarquee {
@@ -286,6 +303,7 @@
         
                             .nameGroup {
                                 font-size: $textSmall;
+                                margin-right: 2rem;
         
                                 .name {
                                     font-weight: $fontSemiBold;
@@ -351,15 +369,6 @@
         display: none;
     }
 
-    .heroBottom2 {
-                margin-top: 2rem !important;
-                padding: 0 !important;
-                line-height: 1.5 !important;
-                text-justify: auto !important;
-                font-size: $textSemiMedium !important;
-                font-weight: $fontMedium !important;
-                display: block !important;
-    }
 
     .swiper {
         width: 90% !important;
@@ -367,14 +376,13 @@
 
     .freeTickets {
         top: 0 !important;
-        left: 6rem !important;
-        height: 6rem !important;
+        left: 5rem !important;
+        height: 5rem !important;
+        padding: 0.5rem !important;
         border-top: 1px solid #55C03A !important;
     }
     .freeTickets2 {
-        display: none;
         visibility: hidden;
-        border: none;
     }
 
   }
@@ -400,7 +408,6 @@
                 span {
             
                 font-size: $textSmall ;
-                // border: 1px solid red;
             }
             p {
                 font-size: $textBase;
@@ -414,18 +421,6 @@
         font-size: 30px !important;
     }
 
-    .partnersContainer {
-        h2 {
-            font-size: 2.5rem !important;
-            font-weight: 500 !important;
-        }
-    }
-
-    .tweetsSection {
-        .sectionHead {
-            font-size: 2.5rem !important;
-            font-weight: 500 !important;
-        }
-    }
-   
+    
 }
+

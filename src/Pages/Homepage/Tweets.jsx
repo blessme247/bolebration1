@@ -13,7 +13,7 @@ const Tweets = () => {
 
     
     <div className="tweetsSection">
-      <div className="sectionHead">Words on the Streets</div>
+      <h2 className="sectionHead">Words on the Streets</h2>
 
       {/* <Marquee className="tweetsWrapper">  */}
       <div className="tweetsMarquee">

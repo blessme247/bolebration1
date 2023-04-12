@@ -41,9 +41,12 @@ const CallToAction = () => {
           <SwiperSlides ticketCount />
 
           <div className="registerBtnWrapper">
-            <Link to="/freeregistration" className="registerBtn">
+            {count === 1500 ? <Link to="/freeticketexhausted" className="registerBtn">
               Register Now
-            </Link>
+            </Link> : <Link to="/registration" className="registerBtn">
+              Register Now
+            </Link>}
+            
           </div>
         </div>
   )

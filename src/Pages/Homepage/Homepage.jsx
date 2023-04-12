@@ -11,14 +11,9 @@ import Tweets from "./Tweets";
 
 import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
+import SecondMarquee from "../../Components/Marquee/SecondMarquee";
 
-const Homepage = () => {
-
-  useEffect(()=>{
-
-    // console.log(ticketCount)
-  }, [])
-
+const Homepage = ({count}) => {
 
 
 
@@ -79,7 +74,9 @@ const Homepage = () => {
 
   return (
     <div>
-      <Marquee />
+
+      {count === 1500 ? <SecondMarquee/> : <Marquee /> }
+      
 
       {/* Homepage content */}
       <section className="homepageWrapper">
@@ -170,7 +167,7 @@ const Homepage = () => {
           </motion.p>
         </div>
 
-        <CallToAction />
+        <CallToAction count={count} />
 
         <Partners />
 

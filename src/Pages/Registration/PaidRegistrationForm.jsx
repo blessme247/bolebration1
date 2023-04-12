@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import logo from "../../assets/Icons/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { registerSchema } from "../../utils/formValidation/register-schema";
+import { paidRegisterSchema } from "../../utils/formValidation/register-schema";
 import { Formik, Field } from "formik";
 import axiosInstance from "../../utils/axiosConfig";
 import Swal from "sweetalert2";
 
-
-const FreeRegistrationForm = () => {
-
+const PaidRegistrationForm = () => {
 
   const navigate = useNavigate();
   return (
@@ -18,9 +16,6 @@ const FreeRegistrationForm = () => {
       </div>
 
       <p className="formHeading">Register</p>
-      <p className="formBrief">
-        Be one of the <span> lucky 1,500 </span> people to get a free ticket
-      </p>
 
       <Formik
         initialValues={{
@@ -28,9 +23,11 @@ const FreeRegistrationForm = () => {
           lastName: "",
           email: "",
           phone: "",
+          ticketType: "",
         }}
-        validationSchema={registerSchema}
+        validationSchema={paidRegisterSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
+            console.log(values.ticketType)
           setSubmitting(true);
 
           let payload = {};
@@ -38,64 +35,60 @@ const FreeRegistrationForm = () => {
           payload.lastName = values.lastName;
           payload.email = values.email;
           payload.phone = values.phone;
-          payload.gender = male;
           payload = values;
           console.log(payload);
+        //   resetForm()
 
-          try {
-            let response = await axiosInstance.post("/free", {
-              email: payload.email,
-              phone: payload.phone,
-              gender: payload.gender,
-              name: `${payload.firstName} ${payload.lastName}`,
-            });
+        //   try {
+        //     let response = await axiosInstance.post("/fre", {
+        //       email: payload.email,
+        //       phone: payload.phone,
+        //       gender: payload.gender,
+        //       name: `${payload.firstName} ${payload.lastName}`,
+        //     });
 
-            if (response) {
-              resetForm();
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title:
-                  "Registration successful, kindly check your email for your ticket.",
-                showConfirmButton: false,
-                timer: 3500,
-              }).then(() => {
-                navigate("/");
-              });
-
-            }
-            return response;
-          } catch (error) {
-            console.log(error, "error")
-            if (error.response.status === 409) {
-              Swal.fire({
-                position: "center",
-                icon: "error",
-                title:
-                  error.response.data.message,
-                showConfirmButton: true,
-                timer: 3500,
-              })
-            }
-            else {
-              Swal.fire({
-                position: "center",
-                icon: "error",
-                title:
-                  "Registration failed, Please try again",
-                showConfirmButton: true,
-                timer: 3500,
-              })
-            }
-          }
+        //     if (response) {
+        //       resetForm();
+        //       Swal.fire({
+        //         position: "center",
+        //         icon: "success",
+        //         title:
+        //           "Registration successful, kindly check your email for your ticket.",
+        //         showConfirmButton: false,
+        //         timer: 3500,
+        //       }).then(() => {
+        //         navigate("/");
+        //       });
+        //     }
+        //     return response;
+        //   } catch (error) {
+        //     console.log(error, "error");
+        //     if (error.response.status === 409) {
+        //       Swal.fire({
+        //         position: "center",
+        //         icon: "error",
+        //         title: error.response.data.message,
+        //         showConfirmButton: true,
+        //         timer: 3500,
+        //       });
+        //     } else {
+        //       Swal.fire({
+        //         position: "center",
+        //         icon: "error",
+        //         title: "Registration failed, Please try again",
+        //         showConfirmButton: true,
+        //         timer: 3500,
+        //       });
+        //     }
+        //   }
         }}
         validate={(values) => {
-          const { firstName, lastName, email, phone } = values;
+          const { firstName, lastName, email, ticketType } = values;
           const errors = {};
           if (!firstName) errors.firstName = "First Name is required";
           if (!lastName) errors.lastName = "Last Name is required";
           if (!email) errors.email = "Email is required";
-          return errors;
+          if (!ticketType) errors.ticketType = "Ticket type is required"
           return errors;
         }}
       >
@@ -172,6 +165,8 @@ const FreeRegistrationForm = () => {
               </div>
             </div>
 
+            
+
             <div className=" radioGroup">
               <div className="maleRadioGroup">
                 <Field
@@ -190,6 +185,30 @@ const FreeRegistrationForm = () => {
                 />
                 <label htmlFor="female">Female</label>
               </div>
+            </div>
+
+            <div className="selectGroup">
+                <label>Ticket type</label>
+            <select
+              name="ticketType"
+              value={values.ticketType}
+              onChange={handleChange}
+              defaultValue={""}
+
+            >
+                <option disabled value="" >
+                Select ticket type
+              </option>
+              <option value="vip" name="ticketType" >
+                VIP
+              </option>
+              <option value="premium" name="ticketType">
+                Premium
+              </option>
+            </select>
+            {errors.ticketType && touched.ticketType && (
+                  <p className="errorText">{errors.ticketType}</p>
+                )}
             </div>
 
             <button
@@ -211,4 +230,4 @@ const FreeRegistrationForm = () => {
   );
 };
 
-export default FreeRegistrationForm;
+export default PaidRegistrationForm;

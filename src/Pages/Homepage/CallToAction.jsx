@@ -16,32 +16,32 @@ const CallToAction = () => {
     <div className="callToAction">
           <div className="freeTickets">
             <div className="percent">
-            {count ? <span>{Math.round((count/1500) * 100 )} %</span> : null}
+            {count ? <span>{Math.round((count/2500) * 100 )} %</span> : null}
 
             </div>
 
             <div className="count">
             <p>Free Tickets</p>
-            <span>{count}/1500</span>
+            <span>{count}/2500</span>
             </div>
           </div>
 
           <div className="freeTickets2">
           <div className="percent">
-          {count ? <span>{Math.round((count/1500) * 100 )} %</span> : null}
+          {count ? <span>{Math.round((count/2500) * 100 )} %</span> : null}
 
             </div>
 
             <div className="count">
             <p>Free Tickets</p>
-            <span>{count}/1500</span>
+            <span>{count}/2500</span>
             </div>
           </div>
 
           <SwiperSlides ticketCount />
 
           <div className="registerBtnWrapper">
-            {count === 1500 ? <Link to="/freeticketexhausted" className="registerBtn">
+            {count === 2500 ? <Link to="/freeticketexhausted" className="registerBtn">
               Register Now
             </Link> : <Link to="/registration" className="registerBtn">
               Register Now

@@ -32,7 +32,7 @@ const Registration = ({count}) => {
             <img src={leftImage} alt="bole (plantain)" />
         </div>
         
-            {count === 1500 ? <PaidRegistrationForm /> : <FreeRegistrationForm  />}
+            {count === 2500 ? <PaidRegistrationForm /> : <FreeRegistrationForm  />}
 
     </div>
 

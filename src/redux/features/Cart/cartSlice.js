@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
 
 // if food is not found, add the item in cart with quantity 1.
         if (!foodInCart){
-     state.push({...action.payload , quantity: 1}).then(()=>{
+     state.push({...action.payload })
         console.log("button clicked")
         toast.success(
             "added to cart successfully",
@@ -20,7 +20,6 @@ export const cartSlice = createSlice({
               position: "top-center",
             }
           );
-     })
         }
     },
 

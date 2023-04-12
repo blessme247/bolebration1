@@ -75,7 +75,7 @@ const Homepage = ({count}) => {
   return (
     <div>
 
-      {count === 1500 ? <SecondMarquee/> : <Marquee /> }
+      {count === 2500 ? <SecondMarquee/> : <Marquee /> }
       
 
       {/* Homepage content */}

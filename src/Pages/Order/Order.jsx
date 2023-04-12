@@ -11,7 +11,7 @@ import { addFood, removeFood } from "../../redux/features/Cart/cartSlice";
 const Order = () => {
   const [isCartOpen, setCartOpen] = useState(false);
 
-  const itemsInCart = useSelector((state) => state.counter.cart);
+  const itemsInCart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   return (
     <div className="orderPageWrapper">
@@ -36,7 +36,7 @@ const Order = () => {
                 foodImage={food.imageSrc}
                 foodName={food.name}
                 price={food.price}
-                addFoodFunc={()=>dispatch(addFood)}
+                addFoodFunc={()=>dispatch(addFood(food))}
               />
             );
           })}

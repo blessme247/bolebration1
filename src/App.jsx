@@ -8,6 +8,7 @@ import Registration from "./Pages/Registration/Registration";
 import Payment from "./Pages/Payment/Payment";
 import { ToastContainer } from "react-toastify";
 import NoFreeTicket from "./Pages/NoFreeTicket/NoFreeTicket";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {

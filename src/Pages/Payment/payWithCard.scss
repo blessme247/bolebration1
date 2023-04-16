@@ -1,0 +1,55 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/global";
+
+.cardPaymentWrapper {
+
+    .top {
+        font-size: $textSemiMedium;
+        font-weight: $fontSemiBold;
+    }
+
+    .debitForm {
+        border-top: 1px solid #BEB8B8;
+        border-left: 1px solid #BEB8B8;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        .group {
+            @extend %flex;
+            margin-bottom: 3rem;
+
+            label {
+                @extend %label;
+            }
+
+            .cardDetailsGroup {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 46%;
+            }
+
+            .additionalDetailsGroup {
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                &.expiryDate {
+                    // width: 30%
+                }
+            }
+
+            input {
+                @extend %input;
+                height: 2.7rem
+            }
+        }
+
+        .verifyBtn {
+            @extend %formBtn;
+            width: 70%;
+            height: 2.7rem;
+            margin: 5rem auto 0 auto;
+        }
+    }
+
+}

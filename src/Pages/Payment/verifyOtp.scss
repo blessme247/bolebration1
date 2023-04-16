@@ -1,0 +1,33 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/components/global";
+
+
+.verifyOTPage {
+
+    .main {
+        margin-top: 2rem;
+
+        &__head {
+            font-size: $textSemiMedium;
+            font-weight: $fontSemiBold;
+            margin-bottom: 1rem;
+        }
+
+        &__subHead {
+            font-size: $textSmall;
+        }
+
+        &__mainOTP {
+            .text {
+                margin-bottom: 1rem;
+            }
+
+        }
+    }
+
+    .verifyOTPBtn {
+        @extend %formBtn;
+        margin: 3rem auto 0 auto;
+
+    }
+}

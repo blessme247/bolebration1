@@ -3,7 +3,6 @@ import "./freeRegistration.scss"
 import leftImage from "../../assets/Images/registerImg.jpg"
 import FreeRegistrationForm from './FreeRegistrationForm'
 import PreorderConfirmationModal from './PreorderConfirmation'
-import { getFreeTicketCount } from '../../utils/getCount'
 import PaidRegistrationForm from './PaidRegistrationForm'
 
 const Registration = ({count}) => {
@@ -18,11 +17,6 @@ const Registration = ({count}) => {
     setShowConfirmation(true)
   }
 
-  useEffect(()=>{
-    console.log(count, "from")
-  },[])
- 
-
 
   return (
 
@@ -32,11 +26,9 @@ const Registration = ({count}) => {
             <img src={leftImage} alt="bole (plantain)" />
         </div>
         
-            {count === 2500 ? <PaidRegistrationForm /> : <FreeRegistrationForm  />}
+            {count < 2500 ? <FreeRegistrationForm /> : <PaidRegistrationForm  />  }
 
     </div>
-
-      {showConfirmation ? <PreorderConfirmationModal /> : null}
             
 
     </>

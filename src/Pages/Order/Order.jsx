@@ -6,9 +6,11 @@ import FoodCard from "./FoodCard";
 import Cart from "./Cart";
 import { foodTray } from "./food";
 import { useDispatch, useSelector } from "react-redux";
-import { addFood, removeFood } from "../../redux/features/Cart/cartSlice";
+import { addFood } from "../../redux/features/Cart/cartSlice";
 
 const Order = () => {
+
+  // State to toggle visibility of the cart
   const [isCartOpen, setCartOpen] = useState(false);
 
   const itemsInCart = useSelector((state) => state.cart.cart);
@@ -29,6 +31,8 @@ const Order = () => {
         <div className="menuHead">All foods</div>
 
         <div className="foodCardWrapper">
+
+          {/* // foodTray contains all food item in database; map over the foodItems  */}
           {foodTray.map((food) => {
             return (
               <FoodCard

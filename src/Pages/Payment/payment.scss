@@ -2,21 +2,27 @@
 @import "../../sass/components/global";
 
 .paymentScreenWrapper {
-    background-color: #55C03A;
+    background-color: lighten($color: #55C03A, $amount: 48);;
     height: 100vh;
-    padding-top: 4rem ;
+    padding-top: 3rem ;
 
     .paymentContent {
         max-width: 70%;
         margin: 0 auto;
         background-color: $white;
-        padding:2rem 0 ;
+        padding:1.5rem 0 ;
         
         .top {
             display: flex;
             gap: 2rem;
             justify-content: center;
-            margin: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+            img {
+                width:50px ;
+                height: 50px;
+            }
 
             p {
                 font-size: $textSemiMedium;
@@ -25,7 +31,9 @@
         }
 
         .main {
-            @extend %flex;
+            // @extend %flex;
+            display: flex;
+            justify-content: space-between;
             max-width: 95%;
             margin: 0 auto;
             
@@ -77,7 +85,54 @@
 
             .right {
                 width: 62%;
-                border: 1px solid black;
+            
+                .paymentMethodWrapper {
+                    border-top: 1px solid $black;
+
+                    .total {
+                        padding-top: 1rem;
+                        font-size: $textSemiMedium;
+                        font-weight: $fontBold;
+                        margin-bottom: 0.5rem;
+                    }
+                    .charge {
+                        font-size: $textBase;
+                        margin-bottom: 1rem;
+                    }
+                    .amountDue {
+                        margin-bottom: 1.2rem;
+                        font-size: $textBase;
+                        font-weight: $fontSemiBold;
+                    }
+
+                    .paymentOption {
+                        
+                        .heading {
+                            font-weight: $fontBold;
+                            margin-bottom: 1.2rem;
+                        }
+
+                        .option {
+                            display: flex;
+                            gap: 1rem;
+                            align-items: center;
+                            border: 1px solid $black;
+                            border-radius: 5px;
+                            padding: 0.7rem 0 0.7rem 2rem;
+                            width: 60%;
+                            cursor: pointer;
+
+                            &.debitOption {
+                                margin-bottom: 2rem;
+                            }
+
+                            .title {
+                                font-size: $textBase;
+                                font-weight: $fontSemiBold;
+                            }
+                        }
+                    }
+                }
             }
         }
 

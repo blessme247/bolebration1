@@ -15,3 +15,27 @@
   font-weight: $fontMedium;
   background-color: $primary;
 }
+
+%label {
+  font-size: 14px;
+  font-weight: $fontSemiBold;
+}
+
+%input {
+  border: none;
+  outline: 2px solid $primary;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+%formBtn {
+  background-color: $primary;
+  color: $white;
+  display: flex;
+  align-items: center;
+  font-size: $textBase;
+  font-weight: $fontMedium;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+}

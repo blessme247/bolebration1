@@ -1,6 +1,12 @@
 @import "../../sass/abstracts/variables";
 @import "../../sass/components/global";
 
+.errorText {
+    color: rgb(213, 28, 28);
+    font-size: 12px;
+    font-weight: 600;
+}
+
 .freeRegPage {
     display: flex;
     justify-content: space-between;
@@ -56,8 +62,8 @@
     }
 }
 
-.freeRegisterForm {
-    margin-top: 2rem;
+.paidRegisterForm {
+    margin-top: 1rem;
 
     .group {
         @extend %flex;
@@ -71,45 +77,67 @@
 
             input {
                 @extend %input;
-                height: 2.9rem;
             }
 
             label {
-                @extend %label;
+                font-size: 14px;
+                font-weight: $fontSemiBold;
+            }
+        }
+    }
+
+    .ticketSelection {
+        @extend %flex;
+        margin-top: 2rem;
+
+        .selectGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 46%;
+
+            label {
+                font-size: 14px;
+                font-weight: $fontSemiBold;
+            }
+    
+            select {
+                padding: 0.6rem;
+                outline: none;
+                border: 2px solid $primary;
+                height: 2.9rem;
+                border-radius: 5px;
+            }
+    
+            
+        }
+
+        .ticketQuantityGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 46%;
+
+            .qtyHead {
+                font-size: 14px;
+                font-weight: $fontSemiBold;
+            }
+
+            .qtySelector {
+                @extend %input;
+    
+                span:nth-child(1), span:nth-child(3) {
+                    cursor: pointer;
+                }
             }
         }
 
-        .errorText {
-            color: rgb(213, 28, 28);
-            font-size: 12px;
-            font-weight: 600;
-        }
+
     }
-
-    .selectGroup {
-        display: flex;
-        flex-direction: column;
-        margin-top: 2rem;
-        gap: 0.5rem;
-
-        select {
-            padding: 0.6rem;
-            outline: none;
-            border: 2px solid $primary;
-            height: 2.9rem;
-            border-radius: 5px;
-            width: 40%;
-        }
-
-        .errorText {
-            color: rgb(213, 28, 28);
-            font-size: 12px;
-            font-weight: 600;
-        }
-    }
+    
 
     .contactGroup {
-        margin-top: 2rem;
+        margin-top: 1.2rem;
     }
 
     .radioGroup {
@@ -137,10 +165,18 @@
     }
 
     .registerBtn {
-        @extend %formBtn;
+        background-color: $primary;
         height: 2.9rem;
+        color: $white;
         width: 50%;
+        display: flex;
+        align-items: center;
+        font-size: $textBase;
+        font-weight: $fontMedium;
+        justify-content: center;
         margin: 3rem auto 0 auto;
+        border: none;
+        border-radius: 5px;
 
         @media (max-width: $layout-breakpoint-small) {
             width: 70%;
@@ -217,7 +253,7 @@
         }
     }
 
-    .freeRegisterForm {
+    .paidRegisterForm {
         .group {
             flex-direction: column;
 
@@ -238,6 +274,19 @@
         .radioGroup {
             display: flex;
         }
+
+        .ticketSelection {
+            flex-direction: column;
+
+        .ticketQuantityGroup{
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .selectGroup {
+            width: 100%;
+        }
+    }
 
         .homeLink {
             top: 110%;

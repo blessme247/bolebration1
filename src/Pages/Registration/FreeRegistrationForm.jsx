@@ -40,7 +40,6 @@ const FreeRegistrationForm = () => {
           payload.phone = values.phone;
           payload.gender = male;
           payload = values;
-          console.log(payload);
 
           try {
             let response = await axiosInstance.post("/free", {
@@ -96,7 +95,6 @@ const FreeRegistrationForm = () => {
           if (!lastName) errors.lastName = "Last Name is required";
           if (!email) errors.email = "Email is required";
           return errors;
-          return errors;
         }}
       >
         {({
@@ -104,7 +102,6 @@ const FreeRegistrationForm = () => {
           errors,
           touched,
           handleChange,
-          handleBlur,
           handleSubmit,
           handleReset,
           isSubmitting,

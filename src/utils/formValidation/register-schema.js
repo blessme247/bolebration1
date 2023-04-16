@@ -13,4 +13,5 @@ export let registerSchema = yup.object().shape({
     email: yup.string().email().required(),
     phone: yup.string().required(),
     ticketType: yup.string().required(),
+    quantity: yup.string().required(),
   });

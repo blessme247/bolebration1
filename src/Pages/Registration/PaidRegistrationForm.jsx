@@ -9,7 +9,7 @@ import "./paidRegistration.scss";
 import axiosInstance from "../../utils/axiosConfig";
 import Swal from "sweetalert2";
 
-const PaidRegistrationForm = () => {
+const PaidRegistrationForm = ({count}) => {
   useEffect(() => {
     Swal.fire({
       position: "center",

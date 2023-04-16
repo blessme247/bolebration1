@@ -5,6 +5,7 @@ export let registerSchema = yup.object().shape({
     lastName: yup.string().required(),
     email: yup.string().email().required(),
     phone: yup.string().required(),
+    gender: yup.string(),
   });
 
   export let paidRegisterSchema = yup.object().shape({

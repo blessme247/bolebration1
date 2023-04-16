@@ -28,17 +28,19 @@ const FreeRegistrationForm = () => {
           lastName: "",
           email: "",
           phone: "",
+          gender: "",
         }}
         validationSchema={registerSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
+          console.log(values)
 
           let payload = {};
           payload.firstName = values.firstName;
           payload.lastName = values.lastName;
           payload.email = values.email;
           payload.phone = values.phone;
-          payload.gender = male;
+          payload.gender = values.gender;
           payload = values;
 
           try {
@@ -46,8 +48,9 @@ const FreeRegistrationForm = () => {
               email: payload.email,
               phone: payload.phone,
               gender: payload.gender,
-              name: `${payload.firstName} ${payload.lastName}`,
+              name: `${payload.firstName} ${payload.lastName}`
             });
+            console.log(values, "trycatchblock")
 
             if (response) {
               resetForm();
@@ -63,8 +66,10 @@ const FreeRegistrationForm = () => {
               });
 
             }
+            console.log(response)
             return response;
           } catch (error) {
+            console.log(values, "trycatchblockwitherror")
             console.log(error, "error")
             if (error.response.status === 409) {
               Swal.fire({
@@ -169,7 +174,7 @@ const FreeRegistrationForm = () => {
               </div>
             </div>
 
-            <div className=" radioGroup">
+            <div className="radioGroup">
               <div className="maleRadioGroup">
                 <Field
                   type="radio"

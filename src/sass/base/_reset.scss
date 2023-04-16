@@ -22,6 +22,7 @@ body {
 
 
 input {
+  -webkit-border-radius: 5px;
   
   @media (max-width:$layout-breakpoint-medium) {
     font-size: $textSemiMedium;
@@ -44,3 +45,4 @@ input[type="radio"],
 input[type="checkbox"] {
   accent-color: #55C03A;
 }
+

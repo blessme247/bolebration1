@@ -40,10 +40,12 @@ const PayViaTransfer = () => {
             </div>
 
             <div className="accountDetails">
-                <p>Account Name: Bolebration</p>
+                <p>Account Name: Xtrapay-Bolebration Events</p>
                 <p>Account Number: 1024490016</p>
                 <p>Vfd Bank</p>
             </div>
+
+            <p className="info">Please ensure that the Sender's name matches with the name in the Registration form</p>
 
             <div className="accountDetails confirmation" onClick={()=> notifyUser()}>
                 I have sent the money

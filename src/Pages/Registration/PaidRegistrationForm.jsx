@@ -25,7 +25,9 @@ const PaidRegistrationForm = () => {
       </div>
 
       <p className="formHeading">Register</p>
-
+      <p className="formBrief">
+        Please ensure that Registration name matches with the Sender's name
+      </p>
       <Formik
         initialValues={{
           firstName: "",
@@ -88,7 +90,6 @@ const PaidRegistrationForm = () => {
             }
             return response;
           } catch (error) {
-            console.log(error, "error");
             Swal.fire({
               position: "center",
               icon: "error",

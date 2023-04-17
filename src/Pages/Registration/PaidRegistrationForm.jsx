@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/Icons/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { paidRegisterSchema } from "../../utils/formValidation/register-schema";
 import { Formik, Field } from "formik";
 
-import "./paidRegistration.scss";
-
 import axiosInstance from "../../utils/axiosConfig";
 import Swal from "sweetalert2";
 
-const PaidRegistrationForm = ({count}) => {
-  useEffect(() => {
-    Swal.fire({
-      position: "center",
-      icon: "info",
-      title:
-        "Kindly Note that the form You're about to fill will generate a pay at the gate ticket for You",
-      showConfirmButton: true,
-      timer: 4000,
-    });
-  }, []);
+// Styles Import
+import "./paidRegistration.scss";
+
+
+const PaidRegistrationForm = () => {
+
+  // get user Paid Registration Details from localStorage 
+  let userPaidRegDetails = JSON.parse(localStorage.getItem("userPaidRegDetails")) || {};
+
+
   const navigate = useNavigate();
   return (
     <div className="formWrapper">
@@ -42,8 +39,6 @@ const PaidRegistrationForm = ({count}) => {
         validationSchema={paidRegisterSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          // console.log(isSubmitting, "submit status")
-          console.log(values);
 
           let payload = {};
           let amount;
@@ -53,50 +48,56 @@ const PaidRegistrationForm = ({count}) => {
           payload.phone = values.phone;
           payload.quantity = values.quantity;
 
-            values.ticketType === "regular"
-              ? amount = 1000 * Number(payload.quantity)
-              : (values.ticketType === "vip")
-              ? amount = 100000 * Number(payload.quantity)
-              :  amount = 250000 * Number(payload.quantity);
+          // Set amount based on ticketType and Quantity input by the user
+          values.ticketType === "regular"
+            ? (amount = 1000 * Number(payload.quantity))
+            : values.ticketType === "vip"
+            ? (amount = 100000 * Number(payload.quantity))
+            : (amount = 250000 * Number(payload.quantity));
 
-              payload = values;
+          payload = values;
           payload.amount = amount;
-          //   resetForm()
 
-            try {
-              let response = await axiosInstance.post("/payatgate", {
-                email: values.email,
-                phone: values.phone,
-                gender: values.gender,
-                name: `${values.firstName} ${values.lastName}`,
-                quantity: values.quantity,
-                amount: values.amount,
+          console.log(values)
+
+          // Store user input in localStorage
+          localStorage.setItem("userPaidRegDetails", JSON.stringify(payload))
+
+          try {
+            let response = await axiosInstance.post("/payatgate", {
+              email: values.email,
+              phone: values.phone,
+              gender: values.gender,
+              name: `${values.firstName} ${values.lastName}`,
+              quantity: values.quantity,
+              amount: values.amount,
+            });
+
+            if (response) {
+              resetForm();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title:
+                  "Registration successful, You will now be redirected to the payment screen",
+                showConfirmButton: true,
+                timer: 3500,
+              }).then(() => {
+                navigate("/ticketcheckout");
               });
-
-              if (response) {
-                resetForm();
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title:
-                    "Registration successful, kindly check your email for your ticket.",
-                  showConfirmButton: false,
-                  timer: 3500,
-                }).then(() => {
-                  navigate("/");
-                });
-              }
-              return response;
-            } catch (error) {
-              console.log(error, "error");
-                Swal.fire({
-                  position: "center",
-                  icon: "error",
-                  title: "Registration failed, Please try again",
-                  showConfirmButton: true,
-                  timer: 3500,
-                })
             }
+            return response;
+          } catch (error) {
+            console.log(error, "error");
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Registration failed, Please try again",
+              showConfirmButton: true,
+              timer: 3500,
+            });
+          }
+
         }}
         validate={(values) => {
           const { firstName, lastName, email, ticketType, quantity } = values;

@@ -8,7 +8,8 @@ import Registration from "./Pages/Registration/Registration";
 import { ToastContainer } from "react-toastify";
 import NoFreeTicket from "./Pages/NoFreeTicket/NoFreeTicket";
 import "react-toastify/dist/ReactToastify.css";
-import OrderPayment from "./Pages/Payment/OrderPayment";
+import OrderPayment from "./Pages/OrderPayment/OrderPayment";
+import TicketPayment from "./Pages/TicketPayment/TicketPayment";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
        <Route path="/registration"  element={<Registration count={count} />}/> 
        <Route path="/order" element={<Order />}/> 
        <Route path="/ordercheckout" element={<OrderPayment />}/> 
+       <Route path="/ticketcheckout" element={<TicketPayment />}/> 
        <Route path="/freeticketexhausted" element={<NoFreeTicket />}/> 
       
      </Routes> 

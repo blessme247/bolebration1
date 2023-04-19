@@ -52,15 +52,13 @@ const PaidRegistrationForm = () => {
 
           // Set amount based on ticketType and Quantity input by the user
           values.ticketType === "regular"
-            ? (amount = 1000 * Number(payload.quantity))
+            ? (amount = (1000 * Number(payload.quantity)) + 50)
             : values.ticketType === "vip"
-            ? (amount = 100000 * Number(payload.quantity))
-            : (amount = 250000 * Number(payload.quantity));
+            ? (amount = (100000 * Number(payload.quantity)) + 50)
+            : (amount = (250000 * Number(payload.quantity)) + 50);
 
           payload = values;
           payload.amount = amount;
-
-          console.log(values)
 
           // Store user input in localStorage
           localStorage.setItem("userPaidRegDetails", JSON.stringify(payload))
@@ -73,6 +71,7 @@ const PaidRegistrationForm = () => {
               name: `${values.firstName} ${values.lastName}`,
               quantity: values.quantity,
               amount: values.amount,
+              ticketType: values.ticketType
             });
 
             if (response) {
@@ -172,7 +171,7 @@ const PaidRegistrationForm = () => {
 
               <div className="formGroup">
                 <label htmlFor="phone" name="phone">
-                  Number
+                 Phone Number
                 </label>
                 <input
                   type="text"
@@ -209,13 +208,13 @@ const PaidRegistrationForm = () => {
                     Select ticket type
                   </option>
                   <option value="regular" name="ticketType">
-                    Regular ₦1,000
+                    Regular ₦1,050
                   </option>
                   <option value="vip" name="ticketType">
-                    VIP (Table of 5) ₦100,000
+                    VIP (Table of 5) ₦100,050
                   </option>
                   <option value="vvip" name="ticketType">
-                    VVIP (Table of 10) ₦250,000
+                    VVIP (Table of 10) ₦250,050
                   </option>
                 </select>
                 {errors.ticketType && touched.ticketType && (

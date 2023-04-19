@@ -14,6 +14,10 @@
 
         .cartOpen {
             cursor: pointer;
+
+            img {
+                transform: translateY(0.3rem);
+            }
         }
     }
 
@@ -24,10 +28,6 @@
         }
 
         .foodCardWrapper {
-            // display: flex;
-            // justify-content: space-between;
-            // align-items: center;
-            // flex-wrap: wrap;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
@@ -37,14 +37,12 @@
 
                 width: 80%;
                 padding: 0 0 1rem 0;
-                // border: 2px solid $primary;
                 border-radius: 2.5rem;
                 margin-top: 2rem;
 
                 .foodName {
                     font-size: $textSmall;
                     font-weight: $fontMedium;
-                    // padding-left: 1rem;
                     
                 }
 
@@ -52,13 +50,9 @@
                     font-size: $textSmall;
                     font-weight: $fontBold;
                     margin: 0.5rem 0;
-                    // padding-left: 1rem;
                 }
                 
                 img {
-                    // border-radius: 15px;
-                    // border-top-right-radius: 2.5rem;
-                    // border-top-left-radius: 2.5rem;
                     height: 250px;
                     width: 100%;
                     object-fit: cover;
@@ -72,7 +66,6 @@
                     padding: 0.6rem 1.5rem ;
                     border-radius: 5px;
                     font-size: $textBase;
-                    // margin-left: 1rem;
                 }
             }
         }
@@ -86,6 +79,11 @@
         left: 65%;
         top: 0;
         height: 100vh;
+        @media (max-width: $layout-breakpoint-small) {
+            width: 100%;
+            left: 0;
+        }
+
         &_heading {
             margin-bottom: 1rem;
             @extend %flex;
@@ -108,9 +106,8 @@
         }
 
         &_orders{
-            // min-height: 200px;
             overflow-y: scroll;
-            height: 100vh - 40vh;
+            height: 100vh - 58vh;
             padding-right: 1rem;
             background-image: url(../../assets/Images/cartBG.png);
             background-repeat: no-repeat;
@@ -149,18 +146,57 @@
 
         &_footer {
             position: sticky;
-            top: 90%;
+            top: 72%;
 
             .price {
                 @extend %flex;
+                margin-top: 1.5rem;
+
+                span {
+                    font-weight: $fontSemiBold;
+                }
             }
 
-            .checoutBtn {
-                width: 100%;
-                @extend %btnWithPadding;
-                background-color: $secondary;
-                margin-top: 1rem;
+            .cartForm {
+
+                .emailGroup {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                    label {
+                        @extend %label;
+                    }
+                    input {
+                        @extend %input;
+                    }
+
+                    .errorMessage {
+                        color: rgb(213, 28, 28);
+                    }
+                }
+                .checkoutRedirectWrapper {
+                    display: flex;
+                    justify-items: center;
+    
+                    .checoutBtn {
+                        width: 100%;
+                        @extend %btnWithPadding;
+                        background-color: $secondary;
+                        margin-top: 2rem;
+                        margin-inline: auto;
+                        font-size: $textSmall;
+        
+                    }
+
+                    .disabledBtn {
+                        width: 100%;
+                        @extend %disabledBtn;
+                        margin-top: 2rem;
+                    }
+                }
             }
+
         }
     }
 }
@@ -174,7 +210,7 @@
 
 //Scrollbar Customization
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
     border-radius: 10px;
     margin-left: 2rem;
   }

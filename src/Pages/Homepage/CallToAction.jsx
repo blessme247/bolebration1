@@ -22,7 +22,7 @@ const CallToAction = () => {
 
             <div className="count">
             <p>Free Tickets</p>
-            <span>{count}/2500</span>
+            <span>{count && Number(count) - 1}/2500</span>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ const CallToAction = () => {
 
             <div className="count">
             <p>Free Tickets</p>
-            <span>{count}/2500</span>
+            <span>{count && Number(count) - 1}/2500</span>
             </div>
           </div>
 
@@ -42,7 +42,8 @@ const CallToAction = () => {
 
           <div className="registerBtnWrapper">
            <Link to="/registration" className="registerBtn">
-              Register Now
+              {count < 2501 && "Register Now"}
+              {count >= 2501 && "Get Tickets"}
             </Link>
             
           </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from "../../assets/Icons/logo.svg";
 
 //Styles Import
 import "./payViaTransfer.scss";
@@ -7,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
-const PayViaTransfer = () => {
+const PayViaTransferr = () => {
 
         // get user Paid Registration Details from localStorage
   let userPaidRegDetails = JSON.parse(localStorage.getItem("userPaidRegDetails")) || {};
 
-  let amountDue = userPaidRegDetails && (userPaidRegDetails.amount + 50).toLocaleString();
+  let amountDue = userPaidRegDetails && (userPaidRegDetails.amount).toLocaleString();
 
   const navigate = useNavigate();
 
@@ -25,6 +24,7 @@ const PayViaTransfer = () => {
         showConfirmButton: true,
         timer: 3500,
       }).then(() => {
+        localStorage.removeItem("userPaidRegDetails")
         navigate("/");
       });
   }
@@ -56,4 +56,4 @@ const PayViaTransfer = () => {
   )
 }
 
-export default PayViaTransfer
+export default PayViaTransferr

@@ -7,7 +7,7 @@
     font-weight: 600;
 }
 
-.freeRegPage {
+.RegPage {
     display: flex;
     justify-content: space-between;
     height: 100vh;
@@ -25,8 +25,8 @@
 
     .formWrapper {
         width: 50%;
-        padding: 2rem  ;
-        overflow: scroll;
+        padding: 2rem 0 3rem 0  ;
+        overflow-y: scroll;
 
         .logoImage {
             display: flex;
@@ -80,8 +80,7 @@
             }
 
             label {
-                font-size: 14px;
-                font-weight: $fontSemiBold;
+                @extend %label;
             }
         }
     }
@@ -97,15 +96,14 @@
             width: 46%;
 
             label {
-                font-size: 14px;
-                font-weight: $fontSemiBold;
+                @extend %label;
             }
     
             select {
                 padding: 0.6rem;
                 outline: none;
                 border: 2px solid $primary;
-                height: 2.9rem;
+                height: 3.3rem;
                 border-radius: 5px;
             }
     
@@ -144,7 +142,7 @@
         margin-top: 2rem;
         display: flex;
         align-items: center;
-        gap: 12rem;
+        gap: 15.5rem;
 
         @media (max-width: $layout-breakpoint-small) {
             justify-content: space-between;
@@ -165,21 +163,16 @@
     }
 
     .registerBtn {
-        background-color: $primary;
-        height: 2.9rem;
-        color: $white;
+        @extend %formBtn;
         width: 50%;
-        display: flex;
-        align-items: center;
-        font-size: $textBase;
-        font-weight: $fontMedium;
-        justify-content: center;
         margin: 3rem auto 0 auto;
-        border: none;
-        border-radius: 5px;
 
         @media (max-width: $layout-breakpoint-small) {
             width: 70%;
+        }
+
+        @media (max-width: $layout-breakpoint-xsmall) {
+            width: 100%;
         }
     }
 
@@ -240,7 +233,7 @@
 
 @media (max-width: $layout-breakpoint-small) {
 
-    .freeRegPage {
+    .RegPage {
         flex-direction: column;
         overflow: visible;
 
@@ -249,7 +242,7 @@
         }
 
         .formWrapper {
-            width: 100%;
+            width: 100% ;
         }
     }
 

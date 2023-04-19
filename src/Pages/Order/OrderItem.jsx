@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeFood } from "../../redux/features/Cart/cartSlice";
 
 
-const OrderItem = ({foodName, price, count, id, food}) => {
+const OrderItem = ({foodName, price, count, id, food, updateCartList, updateTotal}) => {
   
   // State to update count in the UI, where count is the quantity of food We're ordering
   const [itemCount, setItemCount] = useState(count)
@@ -25,6 +25,8 @@ const OrderItem = ({foodName, price, count, id, food}) => {
 
     // Update localStorage with changes in the order item quantity
     localStorage.setItem("cartItems", JSON.stringify(itemsInCart))
+    updateTotal(0)
+    updateCartList(former => itemsInCart)
   }
 
   // Function to decrement order item quantity, it accepts index as a parameter;
@@ -41,6 +43,17 @@ const OrderItem = ({foodName, price, count, id, food}) => {
 
     // Update localStorage with changes in the order item quantity
     localStorage.setItem("cartItems", JSON.stringify(itemsInCart))
+    updateTotal(0)
+    updateCartList(former => itemsInCart)
+  }
+
+  const removeItem = () => {
+    dispatch(removeFood(food))
+
+
+    let itemsInCart = JSON.parse(localStorage.getItem("cartItems")) || []
+    updateTotal(0)
+    updateCartList(former => itemsInCart)
   }
   return (
     <>
@@ -50,7 +63,7 @@ const OrderItem = ({foodName, price, count, id, food}) => {
           <div className="price"> {price} </div>
         </div>
         <div className="order_bottom">
-          <div className="removeBtn" onClick={()=>dispatch(removeFood(food))}>X REMOVE  </div>
+          <div className="removeBtn" onClick={removeItem}>X REMOVE  </div>
           <div className="quantity">
             <span onClick={() => decrementItemCount(id)}>-</span>
             <span>{itemCount}</span>

@@ -75,7 +75,8 @@ const Homepage = ({count}) => {
   return (
     <div>
 
-      {count === 2500 ? <SecondMarquee/> : <Marquee /> }
+      {count  >=  2501 && <SecondMarquee/> }
+            {count <   2501 && <Marquee /> }
       
 
       {/* Homepage content */}

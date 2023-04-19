@@ -14,6 +14,19 @@
   font-size: $textBase;
   font-weight: $fontMedium;
   background-color: $primary;
+  cursor: pointer;
+}
+
+%disabledBtn {
+  text-align: center;
+  padding: 1rem 1.875rem;
+  border-radius: 5px;
+  color: $white;
+  font-size: $textBase;
+  font-weight: $fontMedium;
+  background-color: $primary;
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 %label {
@@ -38,4 +51,5 @@
   justify-content: center;
   border-radius: 5px;
   border: none;
+  height: 3.3rem;
 }

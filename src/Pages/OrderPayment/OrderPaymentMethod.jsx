@@ -1,18 +1,22 @@
 import React from "react";
 import debitIcon from "../../assets/Icons/debitCard.svg";
 import transferIcon from "../../assets/Icons/transfer.svg";
+import { notifyUser } from "../../utils/notifyUser";
 
-const OrderPaymentMethod = ({ setScreenIndex }) => {
+const OrderPaymentMethod = ({ setScreenIndex, total }) => {
+
+  let amountDue = (total + 50).toLocaleString()
   return (
     <div className="paymentMethodWrapper">
-      <p className="orderDetail total">₦10,000</p>
+      <p className="orderDetail total">₦{total.toLocaleString()}</p>
       <p className="orderDetail charge">Surcharge ₦50</p>
 
-      <p className="orderDetail amountDue">Amount Due: ₦10,050</p>
+      <p className="orderDetail amountDue">Amount Due: ₦{amountDue}</p>
 
       <div className="paymentOption">
         <div className="heading">Choose your preferred payment option</div>
-        <div className="option debitOption" onClick={() => setScreenIndex(2)}>
+        {/* <div className="option debitOption" onClick={() => setScreenIndex(2)}> */}
+        <div className="option debitOption" onClick={() => notifyUser()}>
           <span>
             {" "}
             <img src={debitIcon} alt="debit" />{" "}

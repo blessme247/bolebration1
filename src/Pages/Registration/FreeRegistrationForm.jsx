@@ -33,7 +33,6 @@ const FreeRegistrationForm = () => {
         validationSchema={registerSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          console.log(values)
 
           let payload = {};
           payload.firstName = values.firstName;
@@ -50,7 +49,7 @@ const FreeRegistrationForm = () => {
               gender: payload.gender,
               name: `${payload.firstName} ${payload.lastName}`
             });
-            console.log(values, "trycatchblock")
+            
 
             if (response) {
               resetForm();
@@ -163,7 +162,7 @@ const FreeRegistrationForm = () => {
 
               <div className="formGroup">
                 <label htmlFor="phone" name="phone">
-                  Number
+                 Phone Number
                 </label>
                 <input
                   type="text"

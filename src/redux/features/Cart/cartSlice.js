@@ -15,7 +15,7 @@ export const cartSlice = createSlice({
         if (!foodInCart){
          if(!localFoodInCart) {
           action.payload.count = 1
-          state.push({...action.payload })
+          // state.push({...action.payload })
           cartItems.push(action.payload)
           localStorage.setItem("cartItems", JSON.stringify(cartItems))
              toast.success(
@@ -47,6 +47,9 @@ export const cartSlice = createSlice({
     removeFood:(state, action) => {
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || []
     const updatedCartItems = cartItems.filter((item) => item.id !== action.payload.id);
+    // let index = state.findIndex((item) => item.id == action.payload.id);
+    // state = "";
+    // state = state.filter((item) => item.id !== action.payload.id);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems))
     toast.success(
       "item removed from cart successfully",

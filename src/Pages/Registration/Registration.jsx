@@ -14,13 +14,13 @@ const Registration = ({count}) => {
   return (
 
     <> 
-    <div className='freeRegPage'>
+    <div className='RegPage'>
         <div className="imageWrapper">
             <img src={leftImage} alt="bole (plantain)" />
         </div>
         
-            {count <  2500 && <FreeRegistrationForm />}
-            {count  >=  2500 && <PaidRegistrationForm />}
+            {count <   2501 && <FreeRegistrationForm />}
+            {count >=   2501 && <PaidRegistrationForm />}
 
     </div>
             

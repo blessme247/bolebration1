@@ -1,7 +1,7 @@
 @import "../../sass/abstracts/variables";
 @import "../../sass/components/global";
 
-.freeRegPage {
+.RegPage {
     display: flex;
     justify-content: space-between;
     height: 100vh;
@@ -116,7 +116,7 @@
         margin-top: 2rem;
         display: flex;
         align-items: center;
-        gap: 12rem;
+        gap: 15.5rem;
 
         @media (max-width: $layout-breakpoint-small) {
             justify-content: space-between;
@@ -124,8 +124,7 @@
         }
 
         label {
-            font-size: $textBase;
-            font-weight: $fontSemiBold;
+            @extend %label;
         }
         
 
@@ -138,12 +137,15 @@
 
     .registerBtn {
         @extend %formBtn;
-        height: 2.9rem;
         width: 50%;
         margin: 3rem auto 0 auto;
 
         @media (max-width: $layout-breakpoint-small) {
             width: 70%;
+        }
+
+        @media (max-width: $layout-breakpoint-xsmall) {
+            width: 100%;
         }
     }
 
@@ -170,7 +172,6 @@
     padding: 5rem 2rem;
 
     .main {
-        // background-color: $white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -204,7 +205,7 @@
 
 @media (max-width: $layout-breakpoint-small) {
 
-    .freeRegPage {
+    .RegPage {
         flex-direction: column;
         overflow: visible;
 

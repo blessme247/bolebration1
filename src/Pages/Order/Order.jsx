@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./order.scss";
+
+import cartIcon from "../../assets/Icons/shopping-cart.svg"
 
 import logo from "../../assets/Icons/logo.svg";
 import FoodCard from "./FoodCard";
@@ -7,6 +8,10 @@ import Cart from "./Cart";
 import { foodTray } from "./food";
 import { useDispatch, useSelector } from "react-redux";
 import { addFood } from "../../redux/features/Cart/cartSlice";
+
+
+// Styles Import
+import "./order.scss";
 
 const Order = () => {
 
@@ -21,7 +26,7 @@ const Order = () => {
         <img src={logo} alt="logo" />
         {/* <div className="text">Pre-Order</div> */}
         <div className="cartOpen" onClick={() => setCartOpen(true)}>
-          Cart
+          Cart <img src={cartIcon} alt="cart" />
         </div>
       </div>
 

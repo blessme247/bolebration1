@@ -5,7 +5,7 @@ import "./payViaTransfer.scss";
 import { useNavigate } from 'react-router-dom';
 
 
-const PayViaTransfer = ({amountDue, clickFunc}) => {
+const PayViaTransfer = ({amountDue, clickFunc, info }) => {
 
     const navigate = useNavigate()
 
@@ -24,9 +24,9 @@ const PayViaTransfer = ({amountDue, clickFunc}) => {
                 <p>Vfd Bank</p>
             </div>
 
-            <p className="info">Please ensure that the Sender's name matches with the name in the Registration form</p>
+            {info && <p className="info">Please ensure that the Sender's name matches with the name in the Registration form</p>}
 
-            <div className="accountDetails confirmation" onClick={clickFunc}>
+            <div className={info ? "accountDetails confirmation" : "accountDetails confirmation adjuster"} onClick={clickFunc}>
                 I have sent the money
             </div>
 

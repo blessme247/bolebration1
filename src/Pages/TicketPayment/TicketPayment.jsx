@@ -6,7 +6,7 @@ import TicketPaymentMethod from "./TicketPaymentMethod";
 import "../OrderPayment/payment.scss";
 import PayWithCardScreen from "./PayWithCardScreen";
 import PayViaTransfer from "../../Components/PayViaTransfer/PayViaTransfer";
-import { notifyUserAfterTicketTransfer } from "../../utils/notifyUser";
+import { NotifyUserAfterOrderTransfer, OptionNotifier } from "../../utils/notifyUser";
 import { useNavigate } from "react-router-dom";
 
 const TicketPayment = () => {
@@ -14,6 +14,7 @@ const TicketPayment = () => {
 
   // State to update the payment method screen
   const [screenIndex, setScreenIndex] = useState(1);
+  const [isSwal, setIsSwal] = useState(false)
 
   // get user Paid Registration Details from localStorage
   let userPaidRegDetails =
@@ -25,11 +26,31 @@ const TicketPayment = () => {
   let totalAmount =
     userPaidRegDetails && userPaidRegDetails.amount?.toLocaleString();
 
+    let amount;
+
+    // if ((ticketUnitPrice) === NaN) {
+    //   amount = 0;
+    // } else if ((ticketUnitPrice !== NaN)) {
+    //   amount = ticketUnitPrice.toLocaleString()
+    // }
+
+    if (!((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
+      amount = 0;
+      console.log(amount)
+    } else if (((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
+      amount = ticketUnitPrice.toLocaleString()
+      console.log(amount) 
+    }
+
   // Trigger After notifyUserAfterTicketTransfer is executed
   const redirectAndClearLocalStorage = () => {
     localStorage.removeItem("userPaidRegDetails");
     navigate("/");
   };
+
+  const redirect = (loc) => {
+    window.location = loc
+  }
 
   return (
     <div className="paymentScreenWrapper">
@@ -53,7 +74,7 @@ const TicketPayment = () => {
               <p className="detail">
                 <span>Amount</span>{" "}
                 <span>
-                  ₦ {userPaidRegDetails && ticketUnitPrice?.toLocaleString()}
+                  ₦ {userPaidRegDetails && amount}
                 </span>
               </p>
               <p className="detail">
@@ -87,15 +108,33 @@ const TicketPayment = () => {
             ) : screenIndex === 3 ? (
               <VerifyOTP setScreenIndex={setScreenIndex} />
             ) : screenIndex === 4 ? (
-              <PayViaTransfer
-                amountDue={totalAmount}
-                clickFunc={() =>
-                  notifyUserAfterTicketTransfer() 
-                  
-                }
-              />
+              <>
+                <PayViaTransfer
+                  amountDue={totalAmount}
+                  info={true}
+                  clickFunc={() =>{ 
+                    setIsSwal(true)  
+                  }
+                  }
+                />
+                {isSwal && <OptionNotifier
+                  values={{"yes": "Yes",
+                           "no": "No"}}
+                  director={{"yes": "/order",
+                  "no": "/"}}
+                  redirect={redirect} 
+                  title={"Ticket order successful, Your ticket will be sent via email on payment confirmation! Do you want to pre-order food now?"} 
+                 /> }
+              </>
             ) : null}
           </div>
+          {/*<NotifyUserAfterOrderTransfer
+                  position={"center"}
+                  icon={"info"}
+                  title={"You will get an email with your ticket after your transfer is confirmed."}
+                  timer={3500}
+                  director={"/"}
+                />*/}
         </div>
       </div>
     </div>

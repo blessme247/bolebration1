@@ -4,10 +4,13 @@ import logo from "../../assets/Icons/logo.svg";
 import OrderPaymentMethod from "./OrderPaymentMethod";
 import PayWithCardScreen from "./PayWithCardScreen";
 import VerifyOTP from "./VerifyOTP";
+import { NotifyUserAfterOrderTransfer } from "../../utils/notifyUser";
+import PayViaTransfer from "../../Components/PayViaTransfer/PayViaTransfer";
 
 const OrderPayment = () => {
   // State to update the payment method screen
   const [screenIndex, setScreenIndex] = useState(1);
+  const [isSwal, setIsSwal] = useState(false)
 
   // get user Cart Items from localStorage
   let userCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -18,7 +21,7 @@ const OrderPayment = () => {
   return (
     <div className="paymentScreenWrapper">
       <div className="paymentContent">
-        {screenIndex === 1 && (
+        {(screenIndex === 1 || screenIndex === 4) && (
           <div className="top">
             <img src={logo} alt="bolebration logo" />
             <p>Order Checkout</p>
@@ -77,6 +80,23 @@ const OrderPayment = () => {
               <PayWithCardScreen setScreenIndex={setScreenIndex} />
             ) : screenIndex === 3 ? (
               <VerifyOTP setScreenIndex={setScreenIndex} />
+            ) : screenIndex === 4 ? (
+              <>
+                <PayViaTransfer
+                  amountDue={(total + 50)?.toLocaleString()}
+                  clickFunc={() =>{ 
+                    setIsSwal(true)  
+                  }
+                  }
+                />
+                {isSwal && <NotifyUserAfterOrderTransfer 
+                  position={"center"}
+                  icon={"info"}
+                  title={"Order successful! You will get an email with your order receipt after confirmation of payment."}
+                  timer={3500}
+                  director={"/"} 
+                 /> }
+              </>
             ) : null}
           </div>
         </div>

@@ -23,7 +23,9 @@ const OrderPaymentMethod = ({ setScreenIndex, total }) => {
           </span>{" "}
           <span className="title"> Debit Card</span>
         </div>
-        <div className="option transferOption">
+        <div className="option transferOption" onClick={() => {
+          setScreenIndex(4)
+        }}>
           <span>
             {" "}
             <img src={transferIcon} alt="transfer" />{" "}

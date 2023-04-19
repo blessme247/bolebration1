@@ -178,13 +178,29 @@
 
         .registerBtnWrapper {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             margin-top: 4rem;
+            width: 30%;
+            margin: 4rem auto 0 auto;
+
+            @media (max-width: $layout-breakpoint-small) {
+                width: 70%;
+            }
+
+            @media (max-width: $layout-breakpoint-xsmall) {
+                width: 90%;
+            }
 
             .registerBtn {
                @extend %btnWithPadding;
             }
+
+            .orderBtn {
+                @extend %btnWithPadding;
+            }
+
+
         }
     }
 

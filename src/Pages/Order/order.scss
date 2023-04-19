@@ -114,6 +114,10 @@
             background-size: cover;
             background-position: center;
 
+            @media (max-width: $layout-breakpoint-small) {
+                height: 100vh - 65vh;
+            }
+
             .order {
                 border-bottom: 1px solid $black;
                 margin-bottom: 1.5rem;

@@ -202,7 +202,6 @@ const PaidRegistrationForm = () => {
                   name="ticketType"
                   value={values.ticketType}
                   onChange={handleChange}
-                  defaultValue={""}
                 >
                   <option disabled value="">
                     Select ticket type

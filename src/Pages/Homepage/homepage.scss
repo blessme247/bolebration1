@@ -198,6 +198,12 @@
 
             .orderBtn {
                 @extend %btnWithPadding;
+                background-color: lighten($color: $primary, $amount: 45);
+                // background-color: $white;
+                // border: 1px solid $primary;
+                color: $primary;
+                color: #f9ac11;
+                font-weight: $fontSemiBold;
             }
 
 

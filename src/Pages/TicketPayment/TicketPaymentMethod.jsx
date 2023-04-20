@@ -9,20 +9,20 @@ const TicketPaymentMethod = ({ setScreenIndex }) => {
      // get user Paid Registration Details from localStorage
   let userPaidRegDetails = JSON.parse(localStorage.getItem("userPaidRegDetails")) || {};
 
-  let amountDue = userPaidRegDetails && (userPaidRegDetails.amount)?.toLocaleString();
+  let amountDue = userPaidRegDetails && (userPaidRegDetails.amount )?.toLocaleString();
 
 
   return (
     <div className="paymentMethodWrapper">
-      <p className="orderDetail total">₦ {userPaidRegDetails && userPaidRegDetails.amount?.toLocaleString() }</p>
+      {/* <p className="orderDetail total">₦ {userPaidRegDetails && userPaidRegDetails.amount?.toLocaleString() }</p> */}
       {/* <p className="orderDetail charge">Surcharge ₦50</p> */}
 
       <p className="orderDetail amountDue">Amount Due: ₦{amountDue}</p>
 
       <div className="paymentOption">
         <div className="heading">Choose your preferred payment option</div>
-        {/* <div className="option debitOption" onClick={() => setScreenIndex(2)}> */}
-        <div className="option debitOption" onClick={() => notifyUser()}>
+        <div className="option debitOption" onClick={() => setScreenIndex(2)}>
+        {/* <div className="option debitOption" onClick={() => notifyUser()}> */}
           <span>
             {" "}
             <img src={debitIcon} alt="debit" />{" "}

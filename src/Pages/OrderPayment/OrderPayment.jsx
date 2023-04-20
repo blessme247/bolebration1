@@ -21,7 +21,7 @@ const OrderPayment = () => {
   return (
     <div className="paymentScreenWrapper">
       <div className="paymentContent">
-        {(screenIndex === 1 || screenIndex === 4) && (
+        {(screenIndex === 1 || screenIndex === 3 || screenIndex === 4) && (
           <div className="top">
             <img src={logo} alt="bolebration logo" />
             <p>Order Checkout</p>

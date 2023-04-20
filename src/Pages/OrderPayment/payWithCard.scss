@@ -8,6 +8,12 @@
         font-weight: $fontSemiBold;
     }
 
+    .noSupport {
+        margin: 0.5rem 0;
+        color: $primary;
+        font-size: $textSmall;
+    }
+
     .debitForm {
         border-top: 1px solid #BEB8B8;
         border-left: 1px solid #BEB8B8;
@@ -15,7 +21,7 @@
         padding-left: 1rem;
         .group {
             @extend %flex;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
 
             label {
                 @extend %label;
@@ -28,14 +34,23 @@
                 width: 46%;
             }
 
-            .additionalDetailsGroup {
-                width: 30%;
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                &.expiryDate {
-                    // width: 30%
+            &.additionalDetails {
+                @extend %flex;
+                flex-wrap: wrap;
+                .additionalDetailsGroup {
+                    width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+    
+                    .dateSelector {
+                        @extend %input;
+                        height: 2.9rem;
+                    }
+                    
                 }
+           
             }
 
             input {

@@ -12,11 +12,17 @@
         @extend %flex;
         position: relative;
 
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+
         .cartOpen {
             cursor: pointer;
 
             img {
                 transform: translateY(0.3rem);
+                    
             }
         }
     }
@@ -43,7 +49,7 @@
                 .foodName {
                     font-size: $textSmall;
                     font-weight: $fontMedium;
-                    
+                    margin-top: 0.5rem;
                 }
 
                 .price {
@@ -63,7 +69,7 @@
                     background-color: #55C03A ;
                     color: $white;
                     border: none;
-                    padding: 0.6rem 1.5rem ;
+                    padding: 0.7rem 1.5rem ;
                     border-radius: 5px;
                     font-size: $textBase;
                 }

@@ -60,6 +60,8 @@ const PaidRegistrationForm = () => {
           payload = values;
           payload.amount = amount;
 
+          console.log(payload)
+
           // Store user input in localStorage
           localStorage.setItem("userPaidRegDetails", JSON.stringify(payload))
 

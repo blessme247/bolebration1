@@ -23,7 +23,7 @@ const Order = () => {
   return (
     <div className="orderPageWrapper">
       <div className="header">
-        <img src={logo} alt="logo" />
+        <img className="logo" src={logo} alt="logo" />
         {/* <div className="text">Pre-Order</div> */}
         <div className="cartOpen" onClick={() => setCartOpen(true)}>
           Cart <img src={cartIcon} alt="cart" />

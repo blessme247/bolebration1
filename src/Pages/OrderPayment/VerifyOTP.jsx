@@ -1,42 +1,171 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/Icons/logo.svg";
-import OTPInput from '../../Components/OTPInput';
+import OTPInput from "../../Components/OTPInput";
 
+// Styles import
+import "./verifyOtp.scss";
+import axiosInstance from "../../utils/axiosConfig";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { handleResendOTP } from "../../utils/handleResendOTP";
 
 const VerifyOTP = () => {
+
+  // get user OTP Details from localStorage 
+  let userOTPResendDetails = JSON.parse(localStorage.getItem("userOTPResendDetails")) || {};
+
+   // get user Cart Items from localStorage
+  let userCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+
+   const navigate = useNavigate()
+
+  const [otp, setOtp] = useState("");
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(30);
+
+  const resendOTP = () => {
+    setMinutes(1);
+    setSeconds(30);
+  };
+
+  
+  let payload = {}
+  payload.otp = otp;
+  payload.transactionRef = userOTPResendDetails?.transactionRef;
+  payload.paymentId = userOTPResendDetails?.paymentId;
+
+  let resendPayload = {}
+  resendPayload.transactionRef = userOTPResendDetails?.transactionRef;
+  resendPayload.paymentId = userOTPResendDetails?.paymentId;
+  resendPayload.amount = userOTPResendDetails?.amount;
+
+  const handleOTPVerification = async (event)=> {
+    
+    let response;
+
+    try {
+      
+      response = await axiosInstance.post("/confirmotp", 
+          payload
+      )
+
+      console.log(response, "confirmOtp response")
+    } catch (error) {
+      console.log(error, "error")
+    }
+
+    if (response) {
+
+      let dispatch = {}
+      dispatch.email = userPaidRegDetails.email;
+      dispatch.gender = userPaidRegDetails.gender;
+      dispatch.quantity = userPaidRegDetails.quantity;
+      dispatch.phone = userPaidRegDetails.phone;
+      dispatch.ticketType = userPaidRegDetails.ticketType;
+      dispatch.amount = userPaidRegDetails.amount ;
+      dispatch.name = `${userPaidRegDetails.firstName} ${userPaidRegDetails.lastName}`;
+      try {
+        let res = await axiosInstance.post("/cardpay", 
+          dispatch
+        )
+        
+        if (res) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title:
+              "Ticket Payment successful! Kindly check your email for your ticket",
+            showConfirmButton: true,
+            timer: 3500,
+          }).then(() => {
+            navigate("/");
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title:
+            "Something went wrong, please try again!",
+          showConfirmButton: true,
+          timer: 3500,
+        })
+      }
+    }
+    
+    
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
+
   return (
-    <div className='verifyOTPage'>
-        <div className='top'>
+    <div className="verifyOTPage">
+      {/* <div className='top'>
             <img src={logo} alt="logo" />
+        </div> */}
+
+      <div className="otpMain">
+        <div className="otpMain__head">Enter OTP</div>
+        <div className="otpMain__subHead">
+          An OTP has been sent to your phone number
         </div>
 
-        <div className='main'>
-            <div className="main__head">
-                Enter OTP
-            </div>
-            <div className="main__subHead">
-                A 4 digit OTP has been sent to your phone number
-            </div>
-
-            <div className="main__OTP">
-                <p className="text">OTP</p>
-                <OTPInput/>
-            </div>
-
-            <div className="main__OTPresend">
-                <p className="left">
-            Didn’t receive the Code? <span> Resend Code</span> 
-                </p>
-                <p className="right">00:36</p>
-            </div>
-
+        <div className="otpMain__OTP">
+          <p className="text">OTP</p>
+          <OTPInput payload={setOtp} />
         </div>
 
-        <button className="verifyOTPBtn">
-            Verify OTP
-        </button>
+        <div className="otpMain__OTPresend">
+          {seconds > 0 || minutes > 0 ? (
+            <p className="OTP__timer">
+              Time Remaining:{" "}
+              <span>
+                {" "}
+                {minutes < 10 ? `0${minutes}` : minutes}:
+                {seconds < 10 ? `0${seconds}` : seconds}{" "}
+              </span>
+            </p>
+          ) : (
+            <p className="resendMsg">Didn't recieve code?</p>
+          )}
+
+          <button
+            disabled={seconds > 0 || minutes > 0}
+            style={{
+              color: seconds > 0 || minutes > 0 ? "#DFE3E8" : "#D18E0C",
+            }}
+            className="resendBtn"
+            // onClick={resendOTP}
+            onClick={()=>handleResendOTP(resendPayload)}
+          >
+            Resend OTP
+          </button>
+        </div>
+
+        <button onClick={handleOTPVerification} className="verifyOTPBtn">Verify OTP</button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default VerifyOTP
+export default VerifyOTP;

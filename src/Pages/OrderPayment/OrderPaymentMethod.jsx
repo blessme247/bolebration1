@@ -3,6 +3,7 @@ import debitIcon from "../../assets/Icons/debitCard.svg";
 import transferIcon from "../../assets/Icons/transfer.svg";
 import { notifyUser } from "../../utils/notifyUser";
 
+
 const OrderPaymentMethod = ({ setScreenIndex, total }) => {
 
   let amountDue = (total + 50).toLocaleString()
@@ -17,6 +18,7 @@ const OrderPaymentMethod = ({ setScreenIndex, total }) => {
         <div className="heading">Choose your preferred payment option</div>
         {/* <div className="option debitOption" onClick={() => setScreenIndex(2)}> */}
         <div className="option debitOption" onClick={() => notifyUser()}>
+
           <span>
             {" "}
             <img src={debitIcon} alt="debit" />{" "}

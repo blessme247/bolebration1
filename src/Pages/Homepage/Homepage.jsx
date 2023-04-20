@@ -16,7 +16,7 @@ import SecondMarquee from "../../Components/Marquee/SecondMarquee";
 const Homepage = ({count}) => {
 
 
-
+// Use State for Event Countdown timer
   const [expiryTime, setExpiryTime] = useState("2023-04-30T00:00:00+01:00");
   const [countdownTime, setCountdownTime]= useState(
       {
@@ -142,7 +142,7 @@ const Homepage = ({count}) => {
           }}
           >
             Abuja Bolebration is the largest cookout festival in Abuja,
-            Nigeria. This is targeted to promote the South-South
+            Nigeria. This event is targeted to promote the South-South
             culture of Nigeria as well as encourage cultural exchange across
             different races and tribes. The event features Bole - Roasted
             Plantain, entertainment attractions including games, music, cultural displays,

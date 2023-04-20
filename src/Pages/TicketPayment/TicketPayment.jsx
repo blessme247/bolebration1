@@ -8,6 +8,7 @@ import PayWithCardScreen from "./PayWithCardScreen";
 import PayViaTransfer from "../../Components/PayViaTransfer/PayViaTransfer";
 import { NotifyUserAfterOrderTransfer, OptionNotifier } from "../../utils/notifyUser";
 import { useNavigate } from "react-router-dom";
+import VerifyOTP from "./VerifyOTP";
 
 const TicketPayment = () => {
   const navigate = useNavigate();
@@ -20,33 +21,25 @@ const TicketPayment = () => {
   let userPaidRegDetails =
     JSON.parse(localStorage.getItem("userPaidRegDetails")) || {};
 
+    let Amount = userPaidRegDetails && userPaidRegDetails?.amount;
+
   let ticketUnitPrice =
     userPaidRegDetails &&
     (userPaidRegDetails.amount - 50) / userPaidRegDetails.quantity;
+
+    let amount = userPaidRegDetails && (userPaidRegDetails?.amount - 50).toLocaleString();
+
   let totalAmount =
-    userPaidRegDetails && userPaidRegDetails.amount?.toLocaleString();
+    userPaidRegDetails && (userPaidRegDetails?.amount ).toLocaleString();
 
-    let amount;
+    // let ticketUnitPrice = userPaidRegDetails && userPaidRegDetails.amount / userPaidRegDetails.quantity;  // ticketUnitPrice
 
-    // if ((ticketUnitPrice) === NaN) {
+    // if (!((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
     //   amount = 0;
-    // } else if ((ticketUnitPrice !== NaN)) {
+    // } else if (((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
     //   amount = ticketUnitPrice.toLocaleString()
     // }
 
-    if (!((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
-      amount = 0;
-      console.log(amount)
-    } else if (((ticketUnitPrice == 0) || (ticketUnitPrice > 0) || (ticketUnitPrice < 0))) {
-      amount = ticketUnitPrice.toLocaleString()
-      console.log(amount) 
-    }
-
-  // Trigger After notifyUserAfterTicketTransfer is executed
-  const redirectAndClearLocalStorage = () => {
-    localStorage.removeItem("userPaidRegDetails");
-    navigate("/");
-  };
 
   const redirect = (loc) => {
     window.location = loc
@@ -92,7 +85,7 @@ const TicketPayment = () => {
 
             <div className="aggregate">
               <p className="detail totalDetail">
-                <span>Total</span> <span>₦ {totalAmount}</span>
+                <span>Total</span> <span>₦ {totalAmount} </span>
               </p>
 
               <p className="detail lastDetail">
@@ -104,7 +97,7 @@ const TicketPayment = () => {
             {screenIndex === 1 ? (
               <TicketPaymentMethod setScreenIndex={setScreenIndex} />
             ) : screenIndex === 2 ? (
-              <PayWithCardScreen setScreenIndex={setScreenIndex} />
+              <PayWithCardScreen Amount={Amount} setScreenIndex={setScreenIndex} />
             ) : screenIndex === 3 ? (
               <VerifyOTP setScreenIndex={setScreenIndex} />
             ) : screenIndex === 4 ? (
@@ -128,13 +121,6 @@ const TicketPayment = () => {
               </>
             ) : null}
           </div>
-          {/*<NotifyUserAfterOrderTransfer
-                  position={"center"}
-                  icon={"info"}
-                  title={"You will get an email with your ticket after your transfer is confirmed."}
-                  timer={3500}
-                  director={"/"}
-                />*/}
         </div>
       </div>
     </div>

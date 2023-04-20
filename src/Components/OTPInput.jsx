@@ -2,11 +2,12 @@ import React from 'react'
 import PinInput from 'react-pin-input';
 
 
-const OTPInput = () => {
+const OTPInput = ({payload}) => {
   return (
 
+<div style={{ marginLeft: "-12px"}}> 
 <PinInput 
-  length={4} 
+  length={6} 
   initialValue=""
   secret
   secretDelay={500} 
@@ -14,12 +15,14 @@ const OTPInput = () => {
   type="numeric" 
   inputMode="number"
   style={{padding: '10px'}}  
-  inputStyle={{borderColor: 'transparent', borderBottom: "1px solid #e5e5e5"}}
+  inputStyle={{borderColor: '#D18E0C', borderBottom: "2px solid #F18403" }}
   inputFocusStyle={{ borderBottom: "1px solid #F18403"}}
-  onComplete={(value, index) => {}}
+  onComplete={(value, index) => {payload(value)}}
   autoSelect={true}
   regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
 />
+
+</div>
   )
 }
 

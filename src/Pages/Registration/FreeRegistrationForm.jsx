@@ -65,11 +65,8 @@ const FreeRegistrationForm = () => {
               });
 
             }
-            console.log(response)
             return response;
           } catch (error) {
-            console.log(values, "trycatchblockwitherror")
-            console.log(error, "error")
             if (error.response.status === 409) {
               Swal.fire({
                 position: "center",
